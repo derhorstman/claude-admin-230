@@ -1,6 +1,6 @@
 # Projekt-Kontext
 
-**Letzte Aktualisierung:** 2026-01-10 (Session 76 - Feierabend)
+**Letzte Aktualisierung:** 2026-01-11 (Session 77 - Server-Liste aktualisiert)
 
 ---
 
@@ -153,12 +153,38 @@ Wenn `Hippocampus.md` **> 500 Zeilen** wird:
 
 ## Infrastruktur-Übersicht
 
-### Hyper-V Hosts
+### Hyper-V Host: DASBIEST (.16) - SSH Port 22
 
-| Host | IP | OS | RAM | VMs |
-|------|-----|-----|-----|-----|
-| DASBIEST | 192.168.42.16 | Windows 11 | 128 GB | 4 VMs |
-| kleinerHund | 192.168.42.231 | Windows | ? | 5 VMs |
+Haupt-Hypervisor, 128 GB RAM, **iCloud-Share**
+
+| VM# | Hostname | IP | OS | Funktion |
+|-----|----------|-----|-----|----------|
+| 01 | MIRA/EVY | .15 | Linux | AI-System |
+| 02 | devoraxx | .214 | Linux | Next.js + NestJS |
+| 03 | admin-portal | .230 | Linux | Zentrales Admin-Portal (ich) |
+| 04 | dns-portal | .216 | FreeBSD | Unbound DNS + DHCP |
+| 05 | proxy-portal | .254 | Linux | Reverse Proxy |
+| 06 | office | .253 | Linux | Office-Server |
+| 07 | thea | .252 | Linux | Pflegedokumentation |
+| 08 | edo | .246 | Linux | Email-Dienst |
+| 09 | PEDAGOGUS | .128 | Linux | Voting-Plattform |
+| 10 | Jascha | .150 | Linux | OpsRef / Aviation |
+| 11 | cant | .166 | Linux | Chor-Software |
+| 12 | cant_DEV | .174 | Linux | Cant Entwicklung |
+| 13 | Marcel | .195 | Linux | Marcels Terminal-Portal |
+| 14 | stefan | .116 | Linux | Stefans Portal + Coolify |
+| 15 | Projekt_15 | .186 | Linux | Neues Projekt |
+| 16 | Blue | .139 | Linux | Simones KI-Assistent |
+| 17 | openhab | .10 | Linux | Smart Home |
+| 18 | Projekt_18 | .100 | Linux | Neues Projekt |
+| 19 | Nextcloud | .12 | Linux | Cloud + Home Assistant |
+
+### Standalone Geräte
+
+| IP | Name | Funktion |
+|----|------|----------|
+| .11 | zigbee2mqtt | Zigbee-MQTT Bridge (Raspberry Pi) |
+| .17 | Mac Pro | Dieters Rechner (nur noch für `open` Befehle) |
 
 ### Backup-System (NASHORST)
 
@@ -177,65 +203,46 @@ Wenn `Hippocampus.md` **> 500 Zeilen** wird:
 - Credentials: `/root/.qnap-credentials`
 
 **Backup-Scripts:**
-1. `/opt/Claude/scripts/backup-vms-to-qnap.sh` - Projektdaten (12 VMs, täglich 3:00)
+1. `/opt/Claude/scripts/backup-vms-to-qnap.sh` - Projektdaten (19 VMs, täglich 3:00)
 2. `C:\Scripts\vm_backup_qnap.ps1` auf DASBIEST - Hyper-V VM-Export (2.5 Gbps)
    - Scheduled Task: "VM Backup QNAP" täglich 3:00
    - Ziel: `//10.0.0.2/Public/Backups/VMs`
-   - **TODO:** Hyper-V Admin Rechte für dieterhorst auf DASBIEST
 
-### Maschinen (DB-Stand)
+### Netzwerk-Infrastruktur
 
-| ID | Name | IP | Typ | Host | OS | Funktion |
-|----|------|-----|-----|------|-----|----------|
-| 1 | DASBIEST | .16 | HOST | - | HYPERV | Hyper-V Host |
-| 8 | kleinerHund | .231 | HOST | - | HYPERV | Hyper-V Host |
-| 2 | Admin-Server | .230 | VM | DASBIEST | LINUX | Admin-Portal |
-| 4 | devoraxx | .214 | VM | DASBIEST | LINUX | Next.js + NestJS |
-| 5 | SYSTEMHAUS-001 | .15 | VM | DASBIEST | LINUX | EVY/MIRA |
-| 3 | Webserver | .13 | VM | kleinerHund | LINUX | Apache2, 9 Domains |
-| 7 | openhab | .10 | VM | kleinerHund | LINUX | Smart Home |
-| 9 | Nextcloud | .12 | VM | kleinerHund | LINUX | Cloud |
-| 10 | AI-Server | - | VM | kleinerHund | LINUX | - |
-| 11 | DNS-Server | .216 | VM | DASBIEST | FREEBSD | Unbound DNS + DHCP |
-| 12 | Reverse-Proxy | .254 | VM | DASBIEST | LINUX | Zentraler Proxy |
-| - | office | .253 | VM | DASBIEST | LINUX | Ticket-System |
-| 66 | Thea | .252 | VM | DASBIEST | LINUX | Pflege-Assistent |
-| 69 | Raspberry Pi | .11 | STANDALONE | - | LINUX | - |
-| - | edo | .246 | VM | DASBIEST | LINUX | Email-Dienst |
-| - | PEDAGOGUS | .128 | VM | DASBIEST | LINUX | Voting-Plattform |
-| - | OpsRef | .150 | VM | DASBIEST | LINUX | Aviation Reference |
-| - | cant | .166 | VM | DASBIEST | LINUX | Chor-Software |
-| 116 | Stefan | .116 | VM | DASBIEST | LINUX | Stefans Portal |
-| - | Marcel | .195 | VM | DASBIEST | LINUX | Marcels Terminal-Portal |
-| - | NEU | .174 | VM | DASBIEST | LINUX | offen |
+- **Gateway:** 192.168.42.1 (Fritzbox)
+- **DNS/DHCP:** 192.168.42.216 (FreeBSD)
+- **Admin-Portal:** http://192.168.42.230
+- **Gesamt:** 19 VMs auf DASBIEST + 2 Standalone = 21 Geräte
 
 ### SSH-Zugriff (Key-Auth)
 
 ```bash
-# Linux VMs (Port 2222)
-ssh -p 2222 dieterhorst@192.168.42.15   # SYSTEMHAUS-001
-ssh -p 2222 dieterhorst@192.168.42.214  # devoraxx
-ssh -p 2222 dieterhorst@192.168.42.13   # Webserver
-ssh -p 2222 dieterhorst@192.168.42.10   # OpenHAB
-ssh -p 2222 dieterhorst@192.168.42.216  # DNS-Server (FreeBSD)
-ssh -p 2222 dieterhorst@192.168.42.254  # Reverse-Proxy
-ssh -p 2222 dieterhorst@192.168.42.253  # VM .253
-ssh -p 2222 dieterhorst@192.168.42.252  # Thea
-ssh -p 2222 dieterhorst@192.168.42.11   # Raspberry Pi
-ssh -p 2222 dieterhorst@192.168.42.246  # edo
-ssh -p 2222 dieterhorst@192.168.42.128  # PEDAGOGUS
-ssh -p 2222 dieterhorst@192.168.42.150  # OpsRef
-ssh -p 2222 dieterhorst@192.168.42.166  # cant (Chor-Software)
-ssh -p 2222 dieterhorst@192.168.42.116  # Stefan
-ssh -p 2222 dieterhorst@192.168.42.195  # Marcel
-ssh -p 2222 dieterhorst@192.168.42.174  # NEU (Funktion offen)
+# Mac + Windows (Port 22)
+ssh dieterhorst@192.168.42.17            # Mac Pro
+ssh dieterhorst@192.168.42.16            # DASBIEST (Hyper-V Host)
 
-# Windows Hyper-V Hosts (Port 22)
-ssh dieterhorst@192.168.42.16           # DASBIEST
-ssh dieterhorst@192.168.42.231          # kleinerHund
-
-# Mac Pro (Port 22)
-ssh dieterhorst@192.168.42.17           # Mac Pro
+# Linux/FreeBSD VMs (Port 2222)
+ssh -p 2222 dieterhorst@192.168.42.10    # openhab (VM 17)
+ssh -p 2222 dieterhorst@192.168.42.11    # zigbee2mqtt (Raspberry Pi)
+ssh -p 2222 dieterhorst@192.168.42.12    # Nextcloud (VM 19)
+ssh -p 2222 dieterhorst@192.168.42.15    # MIRA/EVY (VM 01)
+ssh -p 2222 dieterhorst@192.168.42.100   # Projekt_18 (VM 18)
+ssh -p 2222 dieterhorst@192.168.42.116   # stefan (VM 14)
+ssh -p 2222 dieterhorst@192.168.42.128   # PEDAGOGUS (VM 09)
+ssh -p 2222 dieterhorst@192.168.42.139   # Blue (VM 16)
+ssh -p 2222 dieterhorst@192.168.42.150   # Jascha/OpsRef (VM 10)
+ssh -p 2222 dieterhorst@192.168.42.166   # cant (VM 11)
+ssh -p 2222 dieterhorst@192.168.42.174   # cant_DEV (VM 12)
+ssh -p 2222 dieterhorst@192.168.42.186   # Projekt_15 (VM 15)
+ssh -p 2222 dieterhorst@192.168.42.195   # Marcel (VM 13)
+ssh -p 2222 dieterhorst@192.168.42.214   # devoraxx (VM 02)
+ssh -p 2222 dieterhorst@192.168.42.216   # dns-portal (VM 04, FreeBSD)
+ssh -p 2222 dieterhorst@192.168.42.230   # admin-portal (VM 03)
+ssh -p 2222 dieterhorst@192.168.42.246   # edo (VM 08)
+ssh -p 2222 dieterhorst@192.168.42.252   # thea (VM 07)
+ssh -p 2222 dieterhorst@192.168.42.253   # office (VM 06)
+ssh -p 2222 dieterhorst@192.168.42.254   # proxy-portal (VM 05)
 ```
 
 ---

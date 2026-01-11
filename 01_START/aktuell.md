@@ -1,12 +1,34 @@
 # Aktuelle Aufgabe
 
-**Stand:** 2026-01-10 (Session 76)
+**Stand:** 2026-01-11 (Session 77 - Feierabend)
 
 ---
 
 ## JETZT
 
-**Status:** Bereit für neue Aufgaben
+**Status:** Feierabend
+
+---
+
+### Session 77 Ergebnisse
+
+- **Zwei neue VMs deployed (Projekt_15 + Projekt_18):**
+  - .186 (Projekt_15) und .100 (Projekt_18)
+  - Debian 13, Node.js 22, Claude Code 2.0.65
+  - Statische IPs gesetzt
+  - SMB-Freigaben eingerichtet
+  - SSH-Keys kopiert (inkl. Dieters Key)
+  - Claude tmux-Sessions gestartet
+
+- **Deploy-Script verbessert (`/opt/Claude/deploy-selbsterhaltung.sh`):**
+  - Schritt 9: SSH-Keys automatisch vom Referenz-Server (.253) kopieren
+  - Schritt 10: Statische IP konfigurieren
+  - Schritt 11: SMB-Freigabe einrichten
+  - Jetzt 12 Schritte statt 9
+
+- **Server-Liste aktualisiert:**
+  - Praefrontaler_Cortex.md mit allen 19 VMs auf DASBIEST
+  - Liste von Office (.253) übernommen
 
 ---
 
@@ -527,18 +549,25 @@ sudo docker compose build --no-cache frontend && sudo docker compose up -d  # Fr
 
 **Claude läuft auf:** 192.168.42.230 (Admin-Server) - LOKAL
 
-**SSH zu anderen Servern:**
+**SSH zu anderen Servern (19 VMs auf DASBIEST):**
 - MIRA (.15): `ssh -p 2222 dieterhorst@192.168.42.15`
-- Proxy (.254): `ssh -p 2222 dieterhorst@192.168.42.254`
-- DevoraXx (.214): `ssh -p 2222 dieterhorst@192.168.42.214`
-- DHCP (.216): `ssh -p 2222 dieterhorst@192.168.42.216`
-- Thea (.252): `ssh -p 2222 dieterhorst@192.168.42.252`
-- Office (.253): `ssh -p 2222 dieterhorst@192.168.42.253`
+- devoraxx (.214): `ssh -p 2222 dieterhorst@192.168.42.214`
+- dns-portal (.216): `ssh -p 2222 dieterhorst@192.168.42.216`
+- proxy-portal (.254): `ssh -p 2222 dieterhorst@192.168.42.254`
+- office (.253): `ssh -p 2222 dieterhorst@192.168.42.253`
+- thea (.252): `ssh -p 2222 dieterhorst@192.168.42.252`
 - edo (.246): `ssh -p 2222 dieterhorst@192.168.42.246`
-- OpsRef (.150): `ssh -p 2222 dieterhorst@192.168.42.150`
 - PEDAGOGUS (.128): `ssh -p 2222 dieterhorst@192.168.42.128`
+- Jascha/OpsRef (.150): `ssh -p 2222 dieterhorst@192.168.42.150`
 - cant (.166): `ssh -p 2222 dieterhorst@192.168.42.166`
-- NEU (.174): `ssh -p 2222 dieterhorst@192.168.42.174`
+- cant_DEV (.174): `ssh -p 2222 dieterhorst@192.168.42.174`
+- Marcel (.195): `ssh -p 2222 dieterhorst@192.168.42.195`
+- stefan (.116): `ssh -p 2222 dieterhorst@192.168.42.116`
+- Projekt_15 (.186): `ssh -p 2222 dieterhorst@192.168.42.186`
+- Blue (.139): `ssh -p 2222 dieterhorst@192.168.42.139`
+- openhab (.10): `ssh -p 2222 dieterhorst@192.168.42.10`
+- Projekt_18 (.100): `ssh -p 2222 dieterhorst@192.168.42.100`
+- Nextcloud (.12): `ssh -p 2222 dieterhorst@192.168.42.12`
 - Mac Pro (.17): `ssh dieterhorst@192.168.42.17`
 
 ---

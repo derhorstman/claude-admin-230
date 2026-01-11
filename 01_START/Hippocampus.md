@@ -46,6 +46,40 @@ Zu aktualisieren:
 
 ---
 
+## Session 77 - 2026-01-11
+
+### Ziel
+Zwei neue VMs (Projekt_15 + Projekt_18) aufsetzen
+
+### Erledigt
+
+1. **VMs deployed (.186 + .100)**
+   - Selbsterhaltung via `/opt/Claude/deploy-selbsterhaltung.sh`
+   - Debian 13, Node.js 22.21.0, Claude Code 2.0.65
+   - tmux + Claude-Session gestartet
+
+2. **Nachgeliefert (vergessen beim Deploy):**
+   - Statische IPs gesetzt (Gateway .1, DNS .216)
+   - SMB-Freigaben eingerichtet (`\\IP\dieterhorst`)
+   - SSH-Keys von .253 kopiert (7 Keys)
+   - Dieters neuen SSH-Key hinzugefügt
+
+3. **Deploy-Script verbessert**
+   - Schritt 9: SSH-Keys vom Referenz-Server (.253) kopieren
+   - Schritt 10: Statische IP konfigurieren
+   - Schritt 11: SMB-Freigabe einrichten
+   - Jetzt 12 Schritte (vorher 9)
+
+4. **Server-Liste aktualisiert**
+   - Praefrontaler_Cortex.md + aktuell.md
+   - Alle 19 VMs auf DASBIEST dokumentiert
+
+### Lessons Learned
+- Deploy-Script muss ALLE Standard-Schritte enthalten (IP, SMB, Keys)
+- Referenz-Server (.253) als Quelle für SSH-Keys nutzen
+
+---
+
 ## Session 75 - 2026-01-09
 
 ### Ziel
