@@ -1,0 +1,219 @@
+# ============================================================
+# PROJEKT TEMPLATE v2.0
+# ============================================================
+# Dieses Template wird von jeder Claude-Instanz auf jeder VM
+# verwendet, um das Projekt vollständig zu verstehen.
+#
+# PROZESS:
+# 1. Claude zippt das Projekt und schickt es an devoraxx (.214)
+# 2. User startet Analyse im Frontend (app.devoraxx.de/superadmin)
+# 3. Claude holt Analyse-Ergebnisse ab (Scores + Findings)
+# 4. Claude füllt dieses Template aus
+# 5. Claude erstellt Strategieplan basierend auf Findings
+#
+# Das Frontend auf .230 liest diese Dateien von allen VMs
+# und aggregiert den Projektstand.
+# ============================================================
+
+# ------------------------------------------------------------
+# 1. PROJEKT-METADATEN
+# ------------------------------------------------------------
+projekt:
+  name: ""                    # Projektname (z.B. "edo")
+  beschreibung: ""           # Ein Satz - was macht das Projekt?
+  version: ""                # Aktuelle Version (z.B. "0.1.0")
+  level: 0                   # 1-10: Wie weit ist das Projekt?
+  vm: ""                     # VM-Adresse (z.B. "192.168.42.246")
+  url: ""                    # Live-URL falls vorhanden
+  repo: ""                   # Git-Repository falls vorhanden
+
+# ------------------------------------------------------------
+# 2. CODE-ANALYSE (devoraxx)
+# ------------------------------------------------------------
+# Automatische Analyse durch devoraxx auf .214
+# Befehle zum Ausführen auf dieser VM:
+#
+# ZIP erstellen und hochladen:
+#   cd /opt && tar --exclude='node_modules' --exclude='.git' \
+#     --exclude='__pycache__' --exclude='.next' --exclude='dist' \
+#     -czf /tmp/PROJEKTNAME.tar.gz PROJEKTORDNER
+#   scp -P 2222 /tmp/PROJEKTNAME.tar.gz 192.168.42.214:/opt/devoraxx/code-uploads/
+#
+# Dann im Browser: https://app.devoraxx.de/superadmin → Analyse starten
+# ------------------------------------------------------------
+codeanalyse:
+  analysiert_am: ""          # ISO-Datum der letzten Analyse
+  devoraxx_id: ""            # ID in devoraxx (falls bekannt)
+
+  # Scores (A=5, B=4, C=3, D=2, F=1)
+  scores:
+    security: ""             # A-F: SQL Injection, XSS, Command Injection
+    quality: ""              # A-F: Clean Code, Best Practices
+    maintainability: ""      # A-F: Lesbarkeit, Doku, Komplexität
+    architecture: ""         # A-F: Struktur, Design Patterns
+    dependencies: ""         # A-F: Libs aktuell, Sicherheit, Lizenzen
+    gesamt: ""               # A-F: Durchschnitt
+
+  # Kritische Findings (aus devoraxx)
+  findings:
+    critical: []             # Severity: critical - MUSS gefixt werden
+    high: []                 # Severity: high - sollte gefixt werden
+    medium: []               # Severity: medium - sollte verbessert werden
+    # Format pro Finding:
+    # - beschreibung: "SQL Injection Risiko"
+    #   datei: "src/api/users.ts"
+    #   zeile: 142
+    #   kategorie: "security"
+    #   verbesserung: "Prepared Statements verwenden"
+
+# ------------------------------------------------------------
+# 3. TECH STACK
+# ------------------------------------------------------------
+stack:
+  backend:
+    framework: ""            # z.B. "FastAPI", "Express", "Django"
+    sprache: ""              # z.B. "Python 3.12", "Node 20"
+    port: 0                  # Backend-Port
+  frontend:
+    framework: ""            # z.B. "SvelteKit 5", "Next.js", "Vue"
+    sprache: ""              # z.B. "TypeScript"
+    port: 0                  # Frontend-Port (Dev)
+  datenbank:
+    typ: ""                  # z.B. "SQLite", "PostgreSQL", "MongoDB"
+    pfad: ""                 # DB-Pfad oder Connection-String
+  deployment:
+    reverse_proxy: ""        # z.B. "nginx", "caddy"
+    ssl: false               # HTTPS aktiv?
+    prozess_manager: ""      # z.B. "systemd", "pm2"
+
+# ------------------------------------------------------------
+# 3. ARCHITEKTUR
+# ------------------------------------------------------------
+architektur:
+  # Alle Komponenten des Systems
+  komponenten:
+    - name: ""
+      typ: ""                # "backend", "frontend", "service", "extern"
+      beschreibung: ""
+      pfad: ""               # Dateipfad oder URL
+      abhaengigkeiten: []    # Liste von Komponenten die diese braucht
+
+  # Wie fließen Daten durch das System?
+  datenfluss:
+    - von: ""
+      nach: ""
+      beschreibung: ""
+      # z.B. "User" -> "Frontend" -> "Backend API" -> "Database"
+
+  # Externe Abhängigkeiten
+  externe_services:
+    - name: ""
+      typ: ""                # "api", "smtp", "storage", etc.
+      adresse: ""
+      beschreibung: ""
+
+# ------------------------------------------------------------
+# 4. DATENMODELL
+# ------------------------------------------------------------
+datenmodell:
+  # Alle wichtigen Entitäten
+  entitaeten:
+    - name: ""
+      beschreibung: ""
+      wichtige_felder: []
+      beziehungen: []        # z.B. ["hat viele Message", "gehört zu Company"]
+
+# ------------------------------------------------------------
+# 5. ROLLEN & BERECHTIGUNGEN
+# ------------------------------------------------------------
+rollen:
+  - name: ""
+    beschreibung: ""
+    kann: []                 # Was kann diese Rolle tun?
+
+# ------------------------------------------------------------
+# 6. MODULE / FEATURES
+# ------------------------------------------------------------
+module:
+  - name: ""
+    slug: ""
+    status: ""               # "fertig", "in_arbeit", "geplant", "offen"
+    beschreibung: ""
+
+# ------------------------------------------------------------
+# 7. STRATEGIE
+# ------------------------------------------------------------
+# WICHTIG: Die Strategie basiert auf den devoraxx-Findings!
+# Priorisierung: Critical Findings → High Findings → Features
+# ------------------------------------------------------------
+strategie:
+  # Was ist das Ziel? Wann ist das Projekt "fertig"?
+  vision: ""
+
+  # Aktueller Stand in Stichpunkten
+  aktueller_stand:
+    - ""
+
+  # Was fehlt noch zum Ziel?
+  luecken:
+    - ""
+
+  # STRATEGIEPLAN - abgeleitet aus Code-Analyse + Vision
+  # Reihenfolge: 1. Security-Findings fixen, 2. Quality verbessern, 3. Features
+  strategieplan:
+    # Phase 1: Critical/High Security Findings beheben
+    phase_1_security:
+      name: "Security Fixes"
+      ziel: "Alle critical + high Security-Findings behoben"
+      tasks: []              # Aus codeanalyse.findings ableiten
+      # Format:
+      # - finding: "SQL Injection in users.ts:142"
+      #   fix: "Prepared Statements implementieren"
+      #   aufwand: "klein"   # klein/mittel/gross
+
+    # Phase 2: Code-Qualität verbessern
+    phase_2_quality:
+      name: "Quality Improvements"
+      ziel: "Score Quality mindestens C"
+      tasks: []
+
+    # Phase 3: Architektur/Maintainability
+    phase_3_architecture:
+      name: "Refactoring"
+      ziel: "Score Architecture/Maintainability mindestens C"
+      tasks: []
+
+    # Phase 4: Feature-Entwicklung
+    phase_4_features:
+      name: "Features"
+      ziel: "Vision erreichen"
+      tasks: []
+
+  # Priorisierte nächste Schritte (Top 5 aus Strategieplan)
+  naechste_schritte:
+    - prioritaet: 1          # 1 = höchste
+      beschreibung: ""
+      grund: ""              # Warum ist das wichtig?
+      phase: ""              # Aus welcher Phase?
+
+  # Wichtige Entscheidungen und WARUM
+  entscheidungen:
+    - was: ""
+      warum: ""
+      wann: ""               # Datum oder Session
+
+# ------------------------------------------------------------
+# 8. SESSION LOG
+# ------------------------------------------------------------
+sessions:
+  letzte_session: 0          # Session-Nummer
+  letzte_aenderung: ""       # ISO-Datum
+  zusammenfassung: ""        # Was wurde zuletzt gemacht?
+
+# ------------------------------------------------------------
+# 9. BEKANNTE PROBLEME / TODOS
+# ------------------------------------------------------------
+probleme:
+  - beschreibung: ""
+    prioritaet: ""           # "hoch", "mittel", "niedrig"
+    seit: ""                 # Wann entdeckt?

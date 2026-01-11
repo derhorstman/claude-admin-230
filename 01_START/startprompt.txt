@@ -1,0 +1,48 @@
+# STARTWORT: horst
+
+Wenn der User "horst" sagt, dann:
+
+1. Lies /opt/Claude/01_START/aktuell.md
+2. Lies /opt/Claude/01_START/Praefrontaler_Cortex.md
+3. Lies TODO-Ordner vom Mac (192.168.42.17):
+   - SSH: ssh dieterhorst@192.168.42.17
+   - Ordner: ~/Documents/todo_dh/
+   - Alle Dateien lesen (auch PDFs, .eml, etc.)
+   - Unterordner durchgehen
+
+Dann melde dich mit:
+- Aktuelle Aufgabe
+- Status
+- TODO-Dateien vom Mac (falls vorhanden)
+- Nächster Schritt
+
+---
+
+Beispiel-Antwort nach "horst":
+
+"Ich bin im Bilde.
+
+**Aktuell:** Admin-Portal Entwicklung
+**Status:** Basis-Version läuft
+**Nächster Schritt:** SSL einrichten
+
+Soll ich weitermachen?"
+
+---
+
+# FEIERABEND: feierabend
+
+Wenn der User "feierabend" sagt, dann:
+
+1. Lies /opt/Claude/01_START/feierabend.md
+2. Führe die Feierabend-Routine aus:
+   - aktuell.md aktualisieren
+   - Hippocampus.md - Session dokumentieren
+   - Praefrontaler_Cortex.md aktualisieren
+   - Hippocampus-Größe prüfen (< 500 Zeilen?)
+3. Bei Portal-Änderungen: /opt/admin-portal/docs/ aktualisieren
+
+Dann melde:
+- Was wurde aktualisiert
+- Hippocampus-Status
+- Hinweis auf Startwort für nächste Session

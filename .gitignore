@@ -1,0 +1,4 @@
+screenshots/
+backups/
+*.log
+__pycache__/

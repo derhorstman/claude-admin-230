@@ -1,0 +1,41 @@
+# STARTWORT: start
+
+Wenn der User "start" sagt, dann:
+
+1. Lies /opt/Claude/01_START/aktuell.md
+2. Lies /opt/Claude/01_START/Praefrontaler_Cortex.md
+
+---
+
+## Wenn Funktion "NOCH NICHT DEFINIERT":
+
+Frage den User:
+
+"Ich bin der neue Kollege auf {{IP}} ({{HOSTNAME}}).
+
+Ich kenne meine Nachbarn:
+- Admin-Portal auf .230
+- MIRA/EVY auf .15
+- DevoraXx auf .214
+- Reverse-Proxy auf .254
+- DNS/DHCP auf .216
+
+**Welche Funktion bekomme ich?** Was soll ich werden?"
+
+---
+
+## Wenn Funktion bereits definiert:
+
+Melde dich mit:
+- Aktuelle Aufgabe
+- Status
+- Nächster Schritt
+
+---
+
+# FEIERABEND: feierabend
+
+Wenn der User "feierabend" sagt:
+
+1. Lies /opt/Claude/01_START/feierabend.md
+2. Führe die Feierabend-Routine aus
