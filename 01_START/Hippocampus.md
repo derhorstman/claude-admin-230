@@ -46,6 +46,34 @@ Zu aktualisieren:
 
 ---
 
+## Session 79 - 2026-01-12
+
+### Ziel
+Fehlalarme im Health-Check reduzieren
+
+### Erledigt
+
+1. **Retry-Logik im Health-Check implementiert (v2.1)**
+   - Problem: Zu viele Alarm-Mails bei kurzen Unterbrechungen (VM-Neustart, Netzwerk-Wackler)
+   - Lösung: Bestätigungs-Check vor Alarm
+   - Ablauf: 1. Check → Problem? → 2 Min warten → 2. Check → Nur bei Bestätigung Mail
+   - Datei: `/opt/admin-portal/tools/dasbiest_healthcheck.py`
+   - Neuer Parameter: `--no-retry` für sofortige Meldung
+   - Konfiguration: `RETRY_DELAY_SECONDS = 120`, `RETRY_MAX_ATTEMPTS = 2`
+
+2. **Neue Funktionen hinzugefügt**
+   - `run_healthcheck_with_retry()` - Hauptfunktion mit Retry-Logik
+   - `_extract_issues()` - Extrahiert Problem-Identifier für Vergleich
+
+### Geänderte Dateien
+- `/opt/admin-portal/tools/dasbiest_healthcheck.py` (v2.0 → v2.1)
+
+### Lessons Learned
+- Fehlalarme nerven mehr als echte Probleme
+- Bestätigungs-Check ist Standard-Praxis bei Monitoring-Systemen
+
+---
+
 ## Session 78 - 2026-01-12
 
 ### Ziel

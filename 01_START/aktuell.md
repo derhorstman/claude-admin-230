@@ -1,12 +1,23 @@
 # Aktuelle Aufgabe
 
-**Stand:** 2026-01-12 (Session 78 - Feierabend)
+**Stand:** 2026-01-12 (Session 79 - Feierabend)
 
 ---
 
 ## JETZT
 
 **Status:** Feierabend
+
+---
+
+### Session 79 Ergebnisse
+
+- **Retry-Logik im Health-Check implementiert (v2.1):**
+  - Problem: Zu viele Fehlalarme bei kurzen Unterbrechungen
+  - Lösung: Bei Problemen 2 Min warten → Bestätigungs-Check → Nur bei Bestätigung Mail
+  - Datei: `/opt/admin-portal/tools/dasbiest_healthcheck.py`
+  - Neuer Parameter: `--no-retry` für sofortige Meldung
+  - Konfigurierbar: `RETRY_DELAY_SECONDS = 120`
 
 ---
 
