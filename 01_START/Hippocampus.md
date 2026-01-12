@@ -46,6 +46,34 @@ Zu aktualisieren:
 
 ---
 
+## Session 80 - 2026-01-12
+
+### Ziel
+Health-Check noch unempfindlicher machen (8x OFFLINE/ONLINE Mails an einem Tag)
+
+### Erledigt
+
+1. **Health-Check v2.2 - Verbesserte Retry-Logik**
+   - Problem: v2.1 (2 Checks, 2 Min) war noch zu empfindlich
+   - Lösung: Jetzt **3 Checks** mit je **60 Sekunden** Pause
+   - Alarm nur wenn **alle 3 Checks** fehlschlagen
+   - Sobald 1 Check OK ist → kein Alarm
+   - Konfiguration: `RETRY_DELAY_SECONDS = 60`, `RETRY_MAX_ATTEMPTS = 3`
+
+2. **run_healthcheck_with_retry() komplett neu geschrieben**
+   - Schleife über alle Versuche statt nur 2 Checks
+   - Bei erstem OK-Check → sofort abbrechen, kein Alarm
+   - Bessere Logging-Ausgaben
+
+### Geänderte Dateien
+- `/opt/admin-portal/tools/dasbiest_healthcheck.py` (v2.1 → v2.2)
+
+### Lessons Learned
+- 2 Minuten waren nicht genug Toleranz
+- 3 Minuten (3x 60s) sollten kurze Netzwerk-Wackler abfangen
+
+---
+
 ## Session 79 - 2026-01-12
 
 ### Ziel
