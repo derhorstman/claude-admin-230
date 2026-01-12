@@ -1,12 +1,21 @@
 # Aktuelle Aufgabe
 
-**Stand:** 2026-01-11 (Session 77 - Feierabend)
+**Stand:** 2026-01-12 (Session 78 - Feierabend)
 
 ---
 
 ## JETZT
 
 **Status:** Feierabend
+
+---
+
+### Session 78 Ergebnisse
+
+- **Zwei Bugs im Admin-Portal behoben:**
+  - **RAM-Anzeige:** `LANG=C free -b` statt `free -b` (deutsche Locale hatte "Speicher" statt "Mem")
+  - **Dienste-Anzeige:** `.lower()` beim OS-Vergleich hinzugefügt (DB: "LINUX", Code prüfte auf "linux")
+  - Backend 2x neu gebaut und deployed
 
 ---
 

@@ -46,6 +46,31 @@ Zu aktualisieren:
 
 ---
 
+## Session 78 - 2026-01-12
+
+### Ziel
+Bugfixes im Admin-Portal
+
+### Erledigt
+
+1. **RAM-Anzeige Bug behoben**
+   - Problem: "Keine Daten" bei RAM auf allen Linux-VMs
+   - Ursache: Deutsche Locale → `free -b` gibt "Speicher" statt "Mem" aus
+   - Fix: `LANG=C free -b | grep Mem` in `/opt/admin-portal/backend/app/api/machines.py:677`
+
+2. **Dienste-Anzeige Bug behoben**
+   - Problem: Services-Liste leer (0 Gesamt / 0 Laufend / 0 Gestoppt)
+   - Ursache: DB speichert `LINUX` (uppercase), Code verglich mit `linux` (lowercase)
+   - Fix: `.lower()` beim OS-Vergleich in `/opt/admin-portal/backend/app/api/machines.py:1000`
+
+3. **Backend 2x neu gebaut und deployed**
+
+### Lessons Learned
+- Locale-Probleme: Immer `LANG=C` für System-Befehle nutzen
+- Case-Sensitivity: DB-Werte können anders sein als Code-Vergleiche
+
+---
+
 ## Session 77 - 2026-01-11
 
 ### Ziel

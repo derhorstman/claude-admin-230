@@ -1,6 +1,6 @@
 # Projekt-Kontext
 
-**Letzte Aktualisierung:** 2026-01-11 (Session 77 - Server-Liste aktualisiert)
+**Letzte Aktualisierung:** 2026-01-12 (Session 78 - Bugfixes RAM/Dienste)
 
 ---
 
