@@ -1,12 +1,22 @@
 # Aktuelle Aufgabe
 
-**Stand:** 2026-01-13 (Session 81 - Feierabend)
+**Stand:** 2026-01-13 (Session 82 - Feierabend)
 
 ---
 
 ## JETZT
 
 **Status:** Feierabend
+
+---
+
+### Session 82 Ergebnisse
+
+- **DASBIEST auf Sessions-Seite hinzugefügt:**
+  - Sessions-API gibt jetzt auch DASBIEST (.16) zurück (trotz HOST-Typ)
+  - Spezielle WSL-Befehle für ps, tmux list-sessions
+  - X-Button (Kill) funktioniert jetzt auch für DASBIEST (WSL-Wrapper)
+  - Backend neu gebaut
 
 ---
 

@@ -1,6 +1,6 @@
 # Projekt-Kontext
 
-**Letzte Aktualisierung:** 2026-01-13 (Session 81 - DASBIEST Terminal)
+**Letzte Aktualisierung:** 2026-01-13 (Session 82 - DASBIEST Sessions)
 
 ---
 

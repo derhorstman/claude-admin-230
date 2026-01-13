@@ -46,30 +46,31 @@ Zu aktualisieren:
 
 ---
 
-## Session 81 - 2026-01-13
+## Session 82 - 2026-01-13
 
 ### Ziel
-Terminal-Button für DASBIEST (Hyper-V Host) hinzufügen
+DASBIEST auch auf Sessions-Seite anzeigen
 
 ### Erledigt
 
-1. **Terminal-Button auf DASBIEST Detailseite**
-   - Bedingung: `type === 'host' && ip.endsWith('.16')`
-   - Auto-Befehl nach SSH: `wsl -d Ubuntu -e tmux attach -t claude`
-   - Datei: `/opt/admin-portal/frontend/src/routes/machines/[id]/+layout.svelte`
+1. **Sessions-API um DASBIEST erweitert**
+   - HOST-Typ mit .16 IP wird jetzt abgefragt (war vorher ausgeschlossen)
+   - WSL-Wrapper für ps/tmux-Befehle: `wsl -d Ubuntu -- bash -c "..."`
+   - Datei: `/opt/admin-portal/backend/app/api/sessions.py`
 
-2. **DASBIEST in Split-Terminal Seite integriert**
-   - Backend: `get_all_machines()` erweitert um Hosts mit .16 IP
-   - Frontend: Auto-WSL-Befehl in `connectTerminal()` nach `ws.onopen`
-   - Dateien:
-     - `/opt/admin-portal/backend/app/api/promptmachine.py`
-     - `/opt/admin-portal/frontend/src/routes/terminals/+page.svelte`
+2. **Kill-Funktionen für DASBIEST gefixt**
+   - `kill_tmux_session()` + `kill_claude_process()` mit WSL-Wrapper
+   - X-Button funktioniert jetzt auch für DASBIEST
 
-3. **Frontend + Backend neu gebaut**
+3. **Backend neu gebaut**
 
-### Lessons Learned
-- Host-Typ muss separat behandelt werden (war nur VM/Standalone)
-- WSL-Befehl muss nach SSH-Connect verzögert gesendet werden (500ms)
+---
+
+## Session 81 - 2026-01-13
+
+### Erledigt
+- Terminal-Button für DASBIEST auf Detailseite + Split-Terminal
+- Auto-Befehl: `wsl -d Ubuntu -e tmux attach -t claude`
 
 ---
 
