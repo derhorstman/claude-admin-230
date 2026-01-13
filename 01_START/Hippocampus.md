@@ -46,6 +46,27 @@ Zu aktualisieren:
 
 ---
 
+## Session 84 - 2026-01-13
+
+### Ziel
+Button für DASBIEST Claude-Session auf Terminals- und Sessions-Seite
+
+### Erledigt
+
+1. **"DASBIEST Claude starten" Button implementiert**
+   - Orangefarbener Button auf der Terminals-Seite (Split Terminal)
+   - Orangefarbener Button auf der Sessions-Seite (Header)
+   - Klick: SSH zu DASBIEST → WSL Ubuntu → tmux + Claude starten
+   - DASBIEST aus der normalen Maschinenauswahl entfernt
+
+2. **Mehrere Bugfixes während der Implementierung**
+   - `wsl` Befehl funktioniert nicht innerhalb von WSL → aufgeteilt in 2 Schritte
+   - Extra `claude` Befehl entfernt (tmux startet Claude direkt)
+   - Timeouts werden bei Terminal-Wechsel abgebrochen
+   - Prüfung ob noch DASBIEST verbunden bevor Befehle gesendet werden
+
+---
+
 ## Session 83 - 2026-01-13
 
 ### Ziel

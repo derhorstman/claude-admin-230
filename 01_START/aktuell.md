@@ -1,12 +1,24 @@
 # Aktuelle Aufgabe
 
-**Stand:** 2026-01-13 (Session 83 - Feierabend)
+**Stand:** 2026-01-13 (Session 84 - Feierabend)
 
 ---
 
 ## JETZT
 
 **Status:** Feierabend
+
+---
+
+### Session 84 Ergebnisse
+
+- **"DASBIEST Claude starten" Button implementiert:**
+  - Orangefarbener Button auf der **Terminals-Seite** (Split Terminal)
+  - Orangefarbener Button auf der **Sessions-Seite** (Header)
+  - Klick: SSH zu DASBIEST → WSL Ubuntu → tmux + Claude starten
+  - DASBIEST aus der normalen Maschinenauswahl entfernt (hat eigenen Button)
+  - Keine automatischen Befehle mehr bei normalem Terminal-Connect
+  - Timeouts werden bei Terminal-Wechsel abgebrochen
 
 ---
 
