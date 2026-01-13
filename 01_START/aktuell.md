@@ -1,6 +1,6 @@
 # Aktuelle Aufgabe
 
-**Stand:** 2026-01-12 (Session 80 - Feierabend)
+**Stand:** 2026-01-13 (Session 81 - Feierabend)
 
 ---
 
@@ -10,15 +10,13 @@
 
 ---
 
-### Session 80 Ergebnisse
+### Session 81 Ergebnisse
 
-- **Health-Check v2.2 - Robustere Retry-Logik:**
-  - Problem: v2.1 mit 2 Checks (2 Min) war noch zu empfindlich → 8x OFFLINE/ONLINE Mails an einem Tag
-  - Lösung: Jetzt **3 Checks** mit je **60 Sekunden** Pause
-  - Alarm nur wenn **alle 3 Checks** fehlschlagen (= 3 Minuten Offline)
-  - Sobald 1 Check OK ist → Problem als "temporär" gewertet, keine Mail
-  - Datei: `/opt/admin-portal/tools/dasbiest_healthcheck.py`
-  - Konfiguration: `RETRY_DELAY_SECONDS = 60`, `RETRY_MAX_ATTEMPTS = 3`
+- **Terminal-Button für DASBIEST hinzugefügt:**
+  - Auf der Detailseite (`/machines/[id]`) für Host mit .16 IP
+  - Auf der Split-Terminal Seite (`/terminals`) - DASBIEST erscheint jetzt in der Liste
+  - Auto-Befehl nach SSH-Connect: `wsl -d Ubuntu -e tmux attach -t claude`
+  - Frontend + Backend neu gebaut
 
 ---
 
