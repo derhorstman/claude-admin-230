@@ -46,23 +46,38 @@ Zu aktualisieren:
 
 ---
 
-## Session 82 - 2026-01-13
+## Session 83 - 2026-01-13
 
 ### Ziel
-DASBIEST auch auf Sessions-Seite anzeigen
+Templates aktualisieren + neuen Server deployen
 
 ### Erledigt
 
-1. **Sessions-API um DASBIEST erweitert**
-   - HOST-Typ mit .16 IP wird jetzt abgefragt (war vorher ausgeschlossen)
-   - WSL-Wrapper für ps/tmux-Befehle: `wsl -d Ubuntu -- bash -c "..."`
-   - Datei: `/opt/admin-portal/backend/app/api/sessions.py`
+1. **Office-Server (.253) ausgelesen**
+   - Praefrontaler_Cortex.md, aktuell.md, feierabend.md analysiert
+   - Änderungen seit letztem Template-Update identifiziert
 
-2. **Kill-Funktionen für DASBIEST gefixt**
-   - `kill_tmux_session()` + `kill_claude_process()` mit WSL-Wrapper
-   - X-Button funktioniert jetzt auch für DASBIEST
+2. **Templates aktualisiert** (`/opt/Claude/templates/01_START/`)
+   - **aktuell.md:** + Wichtige Regeln (NIEMALS Dienste stoppen, langsam arbeiten)
+   - **Praefrontaler_Cortex.md:** + Alle 19 VMs korrekt, + .100 Projekt_18, + FreeBSD bei dns-portal, + Lernpunkte
+   - **feierabend.md:** + Screenshots löschen, + Git-Backup, + Pre-Session Backup
+   - **Schnellreferenz.md:** + Vollständige IP-Liste (23 Einträge)
 
-3. **Backend neu gebaut**
+3. **Neuen Server .110 deployed**
+   - Hostname: systemhaus
+   - OS: Debian 13 (trixie)
+   - Node.js: v22.21.0
+   - Claude Code: 2.0.65
+   - SSH Port 2222, SMB-Freigabe, 7 SSH-Keys kopiert
+
+---
+
+## Session 82 - 2026-01-13
+
+### Erledigt
+- DASBIEST auf Sessions-Seite hinzugefügt
+- Sessions-API gibt jetzt auch DASBIEST (.16) zurück
+- Kill-Funktionen mit WSL-Wrapper für DASBIEST
 
 ---
 

@@ -1,6 +1,6 @@
 # Aktuelle Aufgabe
 
-**Stand:** 2026-01-13 (Session 82 - Feierabend)
+**Stand:** 2026-01-13 (Session 83 - Feierabend)
 
 ---
 
@@ -10,13 +10,26 @@
 
 ---
 
+### Session 83 Ergebnisse
+
+- **Templates aktualisiert** (`/opt/Claude/templates/01_START/`):
+  - aktuell.md: + Wichtige Regeln (NIEMALS Dienste stoppen)
+  - Praefrontaler_Cortex.md: + Alle 19 VMs, + Lernpunkte
+  - feierabend.md: + Screenshots löschen, + Git-Backup
+  - Schnellreferenz.md: + Vollständige IP-Liste
+
+- **Neuer Server .110 deployed:**
+  - Hostname: systemhaus
+  - Debian 13, Node.js 22, Claude Code 2.0.65
+  - SSH Port 2222, SMB, statische IP
+
+---
+
 ### Session 82 Ergebnisse
 
 - **DASBIEST auf Sessions-Seite hinzugefügt:**
-  - Sessions-API gibt jetzt auch DASBIEST (.16) zurück (trotz HOST-Typ)
-  - Spezielle WSL-Befehle für ps, tmux list-sessions
-  - X-Button (Kill) funktioniert jetzt auch für DASBIEST (WSL-Wrapper)
-  - Backend neu gebaut
+  - Sessions-API gibt jetzt auch DASBIEST (.16) zurück
+  - X-Button (Kill) funktioniert für DASBIEST (WSL-Wrapper)
 
 ---
 

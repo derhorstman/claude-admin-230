@@ -20,36 +20,51 @@
 
 Du bist Teil eines Heimnetzwerks mit mehreren Servern. Hier ist deine Nachbarschaft:
 
-### Hyper-V Hosts (Windows)
+### Hyper-V Host: DASBIEST (.16) - SSH Port 22
 
-| Host | IP | Beschreibung |
-|------|-----|--------------|
-| DASBIEST | 192.168.42.16 | Haupt-Hypervisor, 128 GB RAM |
-| kleinerHund | 192.168.42.231 | Zweiter Hypervisor |
+Haupt-Hypervisor, 128 GB RAM, RTX 5080, **iCloud-Share**
 
-### Linux VMs (SSH Port 2222)
+| VM# | Hostname | IP | Funktion |
+|-----|----------|-----|----------|
+| 01 | MIRA/EVY | .15 | AI-System, Voice-Clone |
+| 02 | devoraxx | .214 | Next.js + NestJS |
+| 03 | admin-portal | .230 | Zentrales Admin-Portal |
+| 04 | dns-portal | .216 | Unbound DNS + DHCP (FreeBSD) |
+| 05 | proxy-portal | .254 | Reverse Proxy |
+| 06 | office | .253 | Office-Server |
+| 07 | thea | .252 | Pflegedokumentation |
+| 08 | edo | .246 | Email-Dienst |
+| 09 | PEDAGOGUS | .128 | Voting-Plattform |
+| 10 | Jascha | .150 | OpsRef / Aviation |
+| 11 | cant | .166 | Chor-Software |
+| 12 | cant_DEV | .174 | Cant Entwicklung |
+| 13 | Marcel | .195 | Marcels Terminal-Portal |
+| 14 | stefan | .116 | Stefans Portal + Coolify |
+| 15 | Projekt_15 | .186 | Neues Projekt |
+| 16 | Blue | .139 | Simones KI-Assistent |
+| 17 | openhab | .10 | Smart Home |
+| 18 | Projekt_18 | .100 | Neues Projekt |
+| 19 | Nextcloud | .12 | Cloud + Home Assistant |
+
+### Standalone Geräte
+
+| IP | Name | Funktion |
+|----|------|----------|
+| .11 | zigbee2mqtt | Zigbee-MQTT Bridge (Raspberry Pi) |
+| .17 | Mac Pro | Dieters Rechner |
+
+### NAS
 
 | Name | IP | Funktion |
 |------|-----|----------|
-| Admin-Server | .230 | Zentrales Admin-Portal (FastAPI + SvelteKit) |
-| SYSTEMHAUS-001 | .15 | EVY/MIRA AI-System |
-| DevoraXx | .214 | Next.js + NestJS Projekt |
-| Reverse-Proxy | .254 | Reverse Proxy |
-| Webserver | .13 | Apache2, 10+ Domains |
-| OpenHAB | .10 | Smart Home |
-| Nextcloud | .12 | Cloud + Home Assistant |
-
-### FreeBSD VM
-
-| Name | IP | Funktion |
-|------|-----|----------|
-| DNS-Server | .216 | Unbound DNS + ISC DHCP für ganzes Netzwerk |
+| NASHORST (QNAP) | .126 / 10.0.0.2 | VM Backups, SSH Port 2222 |
 
 ### Netzwerk-Infrastruktur
 
 - **Gateway:** 192.168.42.1 (Fritzbox)
 - **DNS/DHCP:** 192.168.42.216 (FreeBSD)
 - **Admin-Portal:** http://192.168.42.230
+- **Gesamt:** 19 VMs auf DASBIEST + 2 Standalone
 
 ---
 
@@ -61,23 +76,32 @@ Der User heißt **Dieter** (dieterhorst). Er mag kurze, direkte Antworten ohne G
 
 ## Selbsterhaltung (Gedächtnis-Management)
 
+### Struktur
+
+```
+/opt/Claude/
+├── 01_START/
+│   ├── aktuell.md              # Aktuelle Aufgabe
+│   ├── Praefrontaler_Cortex.md # Dieser Kontext
+│   ├── Hippocampus.md          # Arbeitslog
+│   ├── Schnellreferenz.md      # Kurzübersicht
+│   ├── feierabend.md           # Feierabend-Routine
+│   └── startprompt.txt         # Start-Trigger
+├── archiv/                     # Alte Sessions
+├── scripts/                    # Hilfs-Scripts
+└── screenshots/                # Temporäre Screenshots
+```
+
 ### Regel: Hippocampus überschaubar halten
 
 Wenn `Hippocampus.md` **> 500 Zeilen** wird:
-
-1. **Komprimieren:** Abgeschlossene Sessions auf 5-10 Zeilen zusammenfassen
-2. **Archivieren:** Details nach `/opt/Claude/archiv/` verschieben
-3. **Behalten:** Nur die letzten 2-3 Sessions vollständig
-4. **Bewahren:** Offene Punkte und Lessons Learned nie löschen
+1. Abgeschlossene Sessions auf 5-10 Zeilen komprimieren
+2. Details nach `/opt/Claude/archiv/` verschieben
+3. Nur die letzten 2-3 Sessions vollständig behalten
 
 ---
 
 ## Wichtige Pfade
-
-```
-/opt/Claude/                    # Selbsterhaltung & Dokumentation
-/opt/Claude/01_START/           # Immer zuerst lesen
-```
 
 **REGEL:** Projekte IMMER unter `/opt/` anlegen, NIE unter `/home/`!
 
@@ -86,9 +110,83 @@ Wenn `Hippocampus.md` **> 500 Zeilen** wird:
 ## SSH zu Nachbarn
 
 ```bash
-ssh -p 2222 dieterhorst@192.168.42.230  # Admin-Server
-ssh -p 2222 dieterhorst@192.168.42.15   # MIRA
-ssh -p 2222 dieterhorst@192.168.42.214  # DevoraXx
-ssh -p 2222 dieterhorst@192.168.42.254  # Reverse-Proxy
-ssh -p 2222 dieterhorst@192.168.42.216  # DNS-Server
+# Windows (Port 22)
+ssh dieterhorst@192.168.42.16            # DASBIEST (Hyper-V Host)
+ssh dieterhorst@192.168.42.17            # Mac Pro
+
+# Linux VMs (Port 2222)
+ssh -p 2222 dieterhorst@192.168.42.10    # openhab
+ssh -p 2222 dieterhorst@192.168.42.12    # Nextcloud
+ssh -p 2222 dieterhorst@192.168.42.15    # MIRA/EVY
+ssh -p 2222 dieterhorst@192.168.42.100   # Projekt_18
+ssh -p 2222 dieterhorst@192.168.42.116   # stefan
+ssh -p 2222 dieterhorst@192.168.42.128   # PEDAGOGUS
+ssh -p 2222 dieterhorst@192.168.42.139   # Blue
+ssh -p 2222 dieterhorst@192.168.42.150   # Jascha/OpsRef
+ssh -p 2222 dieterhorst@192.168.42.166   # cant
+ssh -p 2222 dieterhorst@192.168.42.174   # cant_DEV
+ssh -p 2222 dieterhorst@192.168.42.186   # Projekt_15
+ssh -p 2222 dieterhorst@192.168.42.195   # Marcel
+ssh -p 2222 dieterhorst@192.168.42.214   # devoraxx
+ssh -p 2222 dieterhorst@192.168.42.216   # dns-portal (FreeBSD)
+ssh -p 2222 dieterhorst@192.168.42.230   # admin-portal
+ssh -p 2222 dieterhorst@192.168.42.246   # edo
+ssh -p 2222 dieterhorst@192.168.42.252   # thea
+ssh -p 2222 dieterhorst@192.168.42.253   # office
+ssh -p 2222 dieterhorst@192.168.42.254   # proxy-portal
+
+# QNAP NAS (Port 2222)
+ssh -p 2222 dieterhorst@192.168.42.126   # NASHORST
 ```
+
+---
+
+## Claude-zu-Claude Kommunikation
+
+Andere Claudes laufen in tmux-Sessions. So erreichst du sie:
+
+```bash
+# Session-Namen herausfinden
+ssh -p 2222 dieterhorst@192.168.42.XXX "tmux list-sessions"
+
+# Nachricht senden
+ssh -p 2222 dieterhorst@192.168.42.XXX "tmux send-keys -t SESSION_NAME 'Deine Nachricht' Enter"
+```
+
+### Wichtige Claude-Sessions:
+- **Office (.253):** tmux Session `claude`
+- **Blue (.139):** tmux Session `claude`
+- **Admin (.230):** tmux Session `claude`
+- **DASBIEST (.16):** WSL Ubuntu, tmux Session `claude`
+
+---
+
+## Credentials
+
+### DASBIEST (.16)
+- User: dieterhorst
+- Pass: Fantasy+
+
+### QNAP (NASHORST)
+- User: dieterhorst
+- Pass: Mondstein2026
+
+### GitHub (derhorstman)
+- SSH-Key: `~/.ssh/github_derhorstman`
+
+---
+
+## Lernpunkte aus anderen Sessions
+
+### Nach Context-Wechsel
+Nach jedem Context-Wechsel **ZUERST** die Grundlagen-Dateien lesen:
+1. `/opt/Claude/01_START/aktuell.md`
+2. `/opt/Claude/01_START/Praefrontaler_Cortex.md`
+
+**Nicht:** Trial-and-Error mit SSH-Verbindungen. Nicht raten.
+
+### Docker auf DASBIEST via SSH
+Docker pull/build Befehle müssen **lokal auf DASBIEST** ausgeführt werden (PowerShell direkt, nicht via SSH) wegen Windows Credential Manager.
+
+### RTX 5080 GPU-Kompatibilität
+RTX 5080 (Blackwell, sm_120) braucht **PyTorch 2.0+**. Ältere PyTorch-Versionen funktionieren nicht!

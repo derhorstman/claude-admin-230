@@ -9,7 +9,7 @@
 ### aktuell.md
 - Aktuellen Stand dokumentieren
 - Nächste Schritte notieren
-- Datum aktualisieren
+- Datum + Session-Nummer aktualisieren
 
 ### Hippocampus.md
 - Session-Zusammenfassung hinzufügen
@@ -35,6 +35,35 @@ Wenn > 500 Zeilen:
 
 ---
 
+## 3. Screenshots löschen
+
+```bash
+rm -f /opt/Claude/screenshots/*.png
+```
+
+---
+
+## 4. Git-Backup erstellen
+
+**WICHTIG: Am Ende IMMER einen Git-Commit machen!**
+
+```bash
+cd /opt/Claude && git add -A && git commit -m "Session $(date +%Y-%m-%d): [Kurze Zusammenfassung]"
+```
+
+Bei GitHub-Push (falls eingerichtet):
+```bash
+cd /opt/Claude && git push
+```
+
+Bei Problemen zurücksetzen:
+```bash
+cd /opt/Claude && git log --oneline -5  # Commits anzeigen
+cd /opt/Claude && git reset --hard <commit-hash>  # Zurücksetzen
+```
+
+---
+
 ## Beispiel-Antwort nach "feierabend":
 
 "Feierabend-Routine:
@@ -43,7 +72,28 @@ Wenn > 500 Zeilen:
 2. Hippocampus.md - Session X dokumentiert
 3. Praefrontaler_Cortex.md aktualisiert
 4. Hippocampus hat XX Zeilen (OK / archivieren nötig)
+5. Screenshots gelöscht
+6. Git-Backup erstellt
 
-**Nächste Session:** Sage das Startwort für Kontext.
+**Nächste Session:** Sage 'start' für Kontext.
 
 Guten Feierabend!"
+
+---
+
+# PRE-SESSION BACKUP
+
+**VOR jeder neuen Session ausführen:**
+
+```bash
+/opt/Claude/scripts/pre-session-backup.sh
+```
+
+- Erstellt Backup von /opt/Claude
+- Speichert in `/opt/Claude/backups/pre-session-DATUM.tar.gz`
+- Behält letzte 5 Backups, löscht ältere automatisch
+
+**Restore bei Problemen:**
+```bash
+cd /opt && tar -xzf /opt/Claude/backups/pre-session-DATUM.tar.gz
+```
