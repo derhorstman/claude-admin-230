@@ -46,6 +46,35 @@ Zu aktualisieren:
 
 ---
 
+## Session 85 - 2026-01-13
+
+### Ziel
+Kaputte Office-VM (.253) Datenrettung
+
+### Erledigt
+
+1. **VHDX gemountet**
+   - `015_SYSTEMHAUS-006_VM_001_kapuut` war bereits als Disk 8 attached
+   - `wsl --mount \\.\PhysicalDrive8 --bare` in WSL durchgereicht
+   - Partition war LVM → `apt install lvm2` in WSL
+
+2. **LVM aktiviert**
+   - `vgscan` fand Volume Group `systemhaus-vg`
+   - `vgchange -ay systemhaus-vg` aktivierte 2 Volumes (root + swap)
+   - `mount -o ro /dev/systemhaus-vg/root /mnt/kaputt`
+
+3. **Daten gerettet**
+   - `/opt/office/`, `/opt/Claude/`, Apps alle lesbar
+   - Backup-VM hochgefahren, Kollege via tmux informiert
+
+4. **Sauber aufgeräumt**
+   - `umount /mnt/kaputt`
+   - `vgchange -an systemhaus-vg`
+   - `wsl --unmount \\.\PhysicalDrive8`
+   - `Dismount-VHD` in PowerShell
+
+---
+
 ## Session 84 - 2026-01-13
 
 ### Ziel

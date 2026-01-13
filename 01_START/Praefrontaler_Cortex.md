@@ -1,6 +1,6 @@
 # Projekt-Kontext
 
-**Letzte Aktualisierung:** 2026-01-13 (Session 83 - Templates + .110 Deploy)
+**Letzte Aktualisierung:** 2026-01-13 (Session 85 - Office-VM Datenrettung)
 
 ---
 

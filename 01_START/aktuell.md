@@ -1,12 +1,23 @@
 # Aktuelle Aufgabe
 
-**Stand:** 2026-01-13 (Session 84 - Feierabend)
+**Stand:** 2026-01-13 (Session 85 - Feierabend)
 
 ---
 
 ## JETZT
 
 **Status:** Feierabend
+
+---
+
+### Session 85 Ergebnisse
+
+- **Kaputte Office-VM (.253) Datenrettung:**
+  - VHDX von `015_SYSTEMHAUS-006_VM_001_kapuut` gemountet
+  - LVM-Tools in WSL installiert, Volume Group `systemhaus-vg` aktiviert
+  - Daten read-only unter `/mnt/kaputt/` zugänglich gemacht
+  - Backup-VM hochgefahren, Kollege via tmux informiert
+  - Platte sauber wieder ausgehängt (LVM → WSL → VHDX)
 
 ---
 
