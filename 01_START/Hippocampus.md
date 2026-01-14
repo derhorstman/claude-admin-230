@@ -1,4 +1,6 @@
-# Arbeitslog
+# Hippocampus - Session-Gedächtnis
+
+**Server:** admin-portal (192.168.42.230)
 
 Chronologische Dokumentation der Entwicklungsarbeit.
 
@@ -43,6 +45,31 @@ Zu aktualisieren:
 - **Session 28:** DELETE-Bug + WebSocket Heartbeat
 - **Session 29:** Raspberry Pi als Standalone-Gerät
 - **Session 30:** SSH-Key auf Raspberry Pi + Terminal funktioniert
+
+---
+
+## Session 88 - 2026-01-14
+
+### Ziel
+Schnellreferenz ausfüllen + Selbsterhaltung prüfen
+
+### Erledigt
+
+1. **Schnellreferenz.md komplett ausgefüllt**
+   - Projektspezifisches: Admin-Portal, Tech-Stack, Ports, Docker Container
+   - Häufige Befehle: Docker Status/Logs/Rebuild, Claude Code Version
+   - Fehler und Lösungen: 6 dokumentierte Probleme aus vergangenen Sessions
+   - Credentials-Hinweise: Pfade zu Config-Dateien (keine Passwörter)
+   - Kontakte: SSH-Verbindungen zu allen VMs, Kollegen-Scripts
+   - Wichtige Pfade und Lernpunkte
+
+2. **Selbsterhaltung Konsistenzprüfung**
+   - Hippocampus.md: Hostname "admin" → "admin-portal" korrigiert
+   - Doppelte Archiv-Tabelle am Dateiende entfernt
+   - Alle 5 Dateien geprüft, jetzt konsistent
+
+3. **Testdatei auf Mac Desktop erstellt**
+   - `admin-portal.txt` mit Hostname und IP
 
 ---
 
@@ -192,13 +219,5 @@ Templates aktualisieren + neuen Server deployen
 - **Session 77:** VMs Projekt_15 (.186) + Projekt_18 (.100) deployed
 - **Session 78:** RAM/Dienste-Anzeige Bugs behoben (Locale + Case)
 - **Session 79-80:** Health-Check v2.2 mit 3x Retry-Logik
-
----
-
-## Archivierte Sessions
-
-| Sessions | Zeitraum | Archiv |
-|----------|----------|--------|
-| 56-62 | 2025-12-28 bis 2026-01-01 | `/opt/Claude/archiv/sessions_56-62.md` |
 
 ---
