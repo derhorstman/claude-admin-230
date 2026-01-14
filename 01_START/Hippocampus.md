@@ -46,6 +46,47 @@ Zu aktualisieren:
 
 ---
 
+## Session 87 - 2026-01-14
+
+### Ziel
+Sessions-Erkennung False Positive fixen
+
+### Erledigt
+
+1. **Bug: `todo-autoclaude-watcher.cjs` als Claude-Session erkannt**
+   - Problem: Portal zeigte .253 mit "Claude Code" obwohl nur ein Node.js-Script lief
+   - Ursache: `grep -E '[c]laude'` matchte auch Scripts mit "claude" im Namen
+   - Fix in `/opt/admin-portal/backend/app/api/sessions.py`:
+     - Suche jetzt nach `/claude` oder `claude-code` (echter Binary-Pfad)
+     - Filter: `grep -v '\-watcher'` schließt Watcher-Scripts aus
+   - Backend neu gebaut und deployed
+
+---
+
+## Session 86 - 2026-01-14
+
+### Ziel
+Backup-API reparieren
+
+### Erledigt
+
+1. **Backup-Seite zeigte keine Backups**
+   - Problem: PowerShell gibt Willkommensnachricht aus → JSON kaputt
+   - Fix: `-NoProfile -NoLogo` zu allen PowerShell-Aufrufen hinzugefügt
+   - Script vereinfacht (2 separate Aufrufe statt komplexes Inline-Script)
+
+### Lernpunkt
+
+**WICHTIG: PowerShell via SSH immer mit `-NoProfile -NoLogo` aufrufen!**
+
+Sonst gibt Windows diese Meldung aus und zerstört den JSON-Output:
+```
+Windows PowerShell
+Copyright (C) Microsoft Corporation. Alle Rechte vorbehalten.
+```
+
+---
+
 ## Session 85 - 2026-01-13
 
 ### Ziel

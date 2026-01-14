@@ -1,12 +1,22 @@
 # Aktuelle Aufgabe
 
-**Stand:** 2026-01-13 (Session 85 - Feierabend)
+**Stand:** 2026-01-14 (Session 87 - Feierabend)
 
 ---
 
 ## JETZT
 
 **Status:** Feierabend
+
+---
+
+### Session 87 Ergebnisse
+
+- **Sessions-Erkennung False Positive gefixt:**
+  - Problem: `todo-autoclaude-watcher.cjs` wurde als "Claude Code" erkannt
+  - Ursache: grep nach "claude" matchte auch Scripts mit "claude" im Namen
+  - Fix: Suche jetzt nur nach `/claude` oder `claude-code`, filtert `-watcher` aus
+  - Backend neu gebaut und deployed
 
 ---
 
