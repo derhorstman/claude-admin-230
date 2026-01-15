@@ -1,12 +1,28 @@
 # Aktuelle Aufgabe
 
-**Stand:** 2026-01-14 (Session 88 - Feierabend)
+**Stand:** 2026-01-15 (Session 89 - Feierabend)
 
 ---
 
 ## JETZT
 
 **Status:** Feierabend
+
+---
+
+### Session 89 Ergebnisse
+
+- **Snippets-System komplett überarbeitet:**
+  - 20 Server-Kategorien erstellt (passend zu /servers Seite)
+  - Kategorie-Namen korrigiert (jascha statt OpsRef, manni statt Projekt_15, etc.)
+  - Neues UI: Kategorien → Snippets → Zurück (statt alles gleichzeitig)
+  - Snippet-Logik geändert: Kategorie-Klick lädt Snippets global (nicht nur pro Server)
+  - Beide Terminal-Seiten (Split + Session) haben jetzt gleiches UI
+  - Doppelter Scrollbalken entfernt
+
+- **Erstes Snippet angelegt:**
+  - "Flutter iOS Build Workflow" für Office (.253)
+  - Kompletter Workflow: Sync zum Mac, Build-Befehl, Problemlösungen
 
 ---
 

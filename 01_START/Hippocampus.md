@@ -48,6 +48,35 @@ Zu aktualisieren:
 
 ---
 
+## Session 89 - 2026-01-15
+
+### Ziel
+Snippets-System neu aufbauen
+
+### Erledigt
+
+1. **20 Server-Kategorien erstellt**
+   - Eine Kategorie pro VM (passend zu /servers Seite)
+   - Kategorie-Namen korrigiert: OpsRef→jascha, Projekt_15→manni, Blue→blue, etc.
+   - tools (.110) und hugo (.248) hinzugefügt
+
+2. **Snippet-UI komplett überarbeitet**
+   - Problem: Kategorien + Snippets gleichzeitig → passt nicht auf Monitor
+   - Lösung: Kategorien → Klick → Snippets mit Zurück-Button
+   - Beide Terminal-Seiten (Split + Session) haben jetzt gleiches UI
+   - Doppelter Scrollbalken entfernt
+
+3. **Snippet-Logik geändert**
+   - Alt: Snippets werden nach verbundenem Server gefiltert
+   - Neu: Kategorie-Klick lädt Snippets dieser Kategorie (global)
+   - Alle Kategorien werden immer angezeigt
+
+4. **Erstes Snippet angelegt**
+   - "Flutter iOS Build Workflow" für Office (.253)
+   - Enthält: Sync-Befehl, Build-Befehl, Device ID, Team ID, Problemlösungen
+
+---
+
 ## Session 88 - 2026-01-14
 
 ### Ziel
