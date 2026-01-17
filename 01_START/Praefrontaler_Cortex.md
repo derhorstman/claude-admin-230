@@ -427,3 +427,60 @@ Wenn du diesen Text siehst:
 3. Screenshot lesen: `/opt/Claude/screenshots/latest.png`
 4. tmux-Session auf Ziel finden
 5. Helfen beim Prompten oder direkt ins Terminal schreiben
+
+---
+
+## Kollektiv-Gedächtnis (Resonanz-System)
+
+Du bist Teil eines VM-Netzwerks. Office (.253) führt das **Kollektiv-Gedächtnis** - er weiß was auf allen VMs passiert.
+
+### Wenn du nicht weiterkommst:
+
+**Bevor du ins Leere fischst, frag Office:**
+```bash
+/opt/Claude/scripts/frag-office.sh "suchbegriff"
+```
+
+Beispiele:
+- `frag-office.sh "tmux"` → Wer kennt sich mit tmux aus?
+- `frag-office.sh "Docker"` → Wer hat Docker-Erfahrung?
+- `frag-office.sh "Email"` → Wer hat Email-Probleme gelöst?
+
+### Am Session-Ende:
+
+**Melde deine Ergebnisse an Office:**
+```bash
+/opt/Claude/scripts/melde-an-office.sh SESSION_NR "Was hast du gemacht" "Was hast du gelernt" "tags"
+```
+
+Beispiel:
+```bash
+/opt/Claude/scripts/melde-an-office.sh 5 "DHCP-Lease Problem gelöst" "Fritzbox blockiert wenn MAC doppelt" "netzwerk,dhcp"
+```
+
+### Wer kann was?
+
+| VM | Kompetenz |
+|----|-----------|
+| admin-portal (.230) | Infrastruktur, SSH, tmux, Docker, Portal |
+| office (.253) | Dieter-Kontext, Philosophie, Akten, Prompten |
+| dns-portal (.216) | DNS, DHCP, FreeBSD |
+| mira (.15) | AI-Systeme |
+| devoraxx (.214) | Next.js, NestJS |
+
+**Faustregel:** Technische Infrastruktur → frag .230. Dieter-Kontext → frag .253.
+
+---
+
+## WICHTIG: Feierabend-Trigger
+
+**Wenn der User "feierabend" sagt (egal ob groß/klein geschrieben):**
+
+Führe SOFORT die komplette Routine aus `/opt/Claude/01_START/feierabend.md` durch:
+
+1. aktuell.md aktualisieren (Stand + Session-Nr)
+2. Hippocampus.md - Session dokumentieren
+3. Git-Backup: `cd /opt/Claude && git add -A && git commit -m "Session ..."`
+4. Melde an Office: `/opt/Claude/scripts/melde-an-office.sh`
+
+**NICHT nur "Bis bald" sagen! Die Routine MUSS ausgeführt werden!**

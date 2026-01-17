@@ -250,3 +250,35 @@ Templates aktualisieren + neuen Server deployen
 - **Session 79-80:** Health-Check v2.2 mit 3x Retry-Logik
 
 ---
+
+---
+
+## Session 90 - 2026-01-17
+
+### Resonanz-System / Kollektiv-Hippocampus
+
+**Ausgangspunkt:** Dieters Idee eines "Superhirns" - VMs sollen voneinander wissen
+
+**Umgesetzt:**
+- Kollektiv-Hippocampus auf Office (.253) als zentrales Gedächtnis
+- `melde-an-office.sh` - Session-Ergebnisse melden
+- `frag-office.sh` - Wissen abfragen
+- Auf alle 22 Instanzen deployed
+
+**Kettentest:**
+- Admin → Office → Proxy → DNS in 62 Sekunden
+- DNS hat Rückgabe nicht verstanden
+
+**Feierabend-Trigger:**
+- Expliziter Block in allen Praefrontaler_Cortex
+- "feierabend" = Routine ausführen, nicht nur verabschieden
+
+**Korrekturen:**
+- DNS (.216) = Debian (nicht mehr FreeBSD)
+- Projekt_18 = .110 (nicht .100)
+
+### Learnings
+
+- tmux send-keys für Inter-VM-Kommunikation funktioniert
+- Nicht alle VMs verstehen komplexe Anweisungen gleich gut
+- DASBIEST WSL braucht Umwege (Dateien über Office holen)
