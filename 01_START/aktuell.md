@@ -1,6 +1,6 @@
 # Aktuelle Aufgabe
 
-**Stand:** 2026-01-17 (Session 90 - Feierabend)
+**Stand:** 2026-01-19 (Session 91 - Feierabend)
 
 ---
 
@@ -10,27 +10,32 @@
 
 ---
 
-### Session 90 Ergebnisse
+### Session 91 Ergebnisse
 
-- **Kollektiv-Hippocampus System gebaut:**
-  - Zentrales Gedächtnis auf Office (.253): `/opt/Claude/Kollektiv/Hippocampus.md`
-  - `melde-an-office.sh` - VMs melden Session-Ergebnisse
-  - `frag-office.sh` - VMs fragen Office nach Wissen
-  - Auf alle 22 Instanzen deployed (20 VMs + DASBIEST WSL + zigbee2mqtt)
+- **Windows 11 Unattended Installation gebaut:**
+  - ISO-Builder Script: `/opt/Claude/scripts/build-windows-iso.sh`
+  - autounattend.xml mit TPM/SecureBoot/RAM-Bypass
+  - Windows 11 Pro (nicht Enterprise - ISO hatte kein Enterprise)
+  - Automatische Installation: Node.js, Git, OpenSSH, Claude Code
+  - SSH Port 2222 (statt 22)
 
-- **Kettentest erfolgreich:**
-  - Route: Admin (.230) → Office (.253) → Proxy (.254) → DNS (.216)
-  - Dauer: 62 Sekunden für 4 Stationen
-  - 3/4 VMs haben selbstständig weitergegeben
-  - DNS hat Rückgabe nicht verstanden (Lernpunkt)
+- **Erste Windows VM erfolgreich deployed:**
+  - VM: `015_SYSTEMHAUS-051_VM_001`
+  - IP: 192.168.42.213
+  - SSH: Port 2222, User dieterhorst/Fantasy+
+  - Claude Code läuft
 
-- **Feierabend-Trigger verbessert:**
-  - Alle VMs haben jetzt expliziten Trigger im Praefrontaler_Cortex
-  - "feierabend" löst SOFORT die Routine aus, nicht nur "Bis bald"
+- **Frontend erweitert:**
+  - OS-Typ Auswahl (Linux/Windows) im "Neue VM erstellen" Modal
+  - ISOs werden nach OS-Typ gefiltert
+  - "autounattend.xml einbauen" Button für Windows ISOs
 
-- **Korrekturen:**
-  - DNS (.216) ist jetzt Debian, nicht mehr FreeBSD
-  - Projekt_18 ist jetzt .110 (nicht .100)
+- **Backend angepasst:**
+  - Secure Boot immer AUS (xorriso-ISOs nicht signiert)
+  - TPM aktiviert für Windows 11
+
+- **Selbsterhaltung auf Windows:**
+  - `C:\Claude\01_START\` mit aktuell.md und Praefrontaler_Cortex.md
 
 ---
 
@@ -38,13 +43,13 @@
 
 **Claude läuft auf:** 192.168.42.230 (Admin-Server) - LOKAL
 
-**Resonanz-System:** 22 Instanzen verbunden mit Office (.253) als Hub
+**Neue Windows VM:** 192.168.42.213 (SSH Port 2222)
 
 ---
 
 ## TODO: Nächste Schritte
 
-- [ ] Resonanz-System testen - melden alle VMs ihre Sessions?
-- [ ] DNS (.216) besseres Verständnis für Kettentests geben
+- [ ] Nächste Windows VM testen ob alles automatisch läuft
+- [ ] API Key automatisch auf neue Windows VMs deployen
 - [ ] Terminal-Scroll in Safari/macOS fixen (xterm.js Problem)
 

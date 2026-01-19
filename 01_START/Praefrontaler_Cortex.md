@@ -162,7 +162,7 @@ Haupt-Hypervisor, 128 GB RAM, **iCloud-Share**
 | 01 | MIRA/EVY | .15 | Linux | AI-System |
 | 02 | devoraxx | .214 | Linux | Next.js + NestJS |
 | 03 | admin-portal | .230 | Linux | Zentrales Admin-Portal (ich) |
-| 04 | dns-portal | .216 | FreeBSD | Unbound DNS + DHCP |
+| 04 | dns-portal | .216 | Linux | Unbound DNS + DHCP |
 | 05 | proxy-portal | .254 | Linux | Reverse Proxy |
 | 06 | office | .253 | Linux | Office-Server |
 | 07 | thea | .252 | Linux | Pflegedokumentation |
@@ -173,11 +173,16 @@ Haupt-Hypervisor, 128 GB RAM, **iCloud-Share**
 | 12 | cant_DEV | .174 | Linux | Cant Entwicklung |
 | 13 | Marcel | .195 | Linux | Marcels Terminal-Portal |
 | 14 | stefan | .116 | Linux | Stefans Portal + Coolify |
-| 15 | Projekt_15 | .186 | Linux | Neues Projekt |
+| 15 | manni | .186 | Linux | Mannis Portal |
 | 16 | Blue | .139 | Linux | Simones KI-Assistent |
 | 17 | openhab | .10 | Linux | Smart Home |
-| 18 | Projekt_18 | .100 | Linux | Neues Projekt |
+| 18 | tools | .110 | Linux | Utility-Sammlung |
 | 19 | Nextcloud | .12 | Linux | Cloud + Home Assistant |
+| 20 | hugo | .248 | Linux | Hugo Portal |
+
+### Hyper-V Host: kleinerHund (.231) - SSH Port 22
+
+Dev-Hypervisor
 
 ### Standalone Geräte
 
@@ -211,9 +216,9 @@ Haupt-Hypervisor, 128 GB RAM, **iCloud-Share**
 ### Netzwerk-Infrastruktur
 
 - **Gateway:** 192.168.42.1 (Fritzbox)
-- **DNS/DHCP:** 192.168.42.216 (FreeBSD)
+- **DNS/DHCP:** 192.168.42.216 (Debian)
 - **Admin-Portal:** http://192.168.42.230
-- **Gesamt:** 19 VMs auf DASBIEST + 2 Standalone = 21 Geräte
+- **Gesamt:** 20 VMs auf DASBIEST + 2 Hypervisors + 2 Standalone + 1 NAS = 25 Geräte
 
 ### SSH-Zugriff (Key-Auth)
 
@@ -227,17 +232,19 @@ ssh -p 2222 dieterhorst@192.168.42.10    # openhab (VM 17)
 ssh -p 2222 dieterhorst@192.168.42.11    # zigbee2mqtt (Raspberry Pi)
 ssh -p 2222 dieterhorst@192.168.42.12    # Nextcloud (VM 19)
 ssh -p 2222 dieterhorst@192.168.42.15    # MIRA/EVY (VM 01)
-ssh -p 2222 dieterhorst@192.168.42.100   # Projekt_18 (VM 18)
+ssh -p 2222 dieterhorst@192.168.42.110   # tools (VM 18)
 ssh -p 2222 dieterhorst@192.168.42.116   # stefan (VM 14)
 ssh -p 2222 dieterhorst@192.168.42.128   # PEDAGOGUS (VM 09)
 ssh -p 2222 dieterhorst@192.168.42.139   # Blue (VM 16)
 ssh -p 2222 dieterhorst@192.168.42.150   # Jascha/OpsRef (VM 10)
 ssh -p 2222 dieterhorst@192.168.42.166   # cant (VM 11)
 ssh -p 2222 dieterhorst@192.168.42.174   # cant_DEV (VM 12)
-ssh -p 2222 dieterhorst@192.168.42.186   # Projekt_15 (VM 15)
+ssh -p 2222 dieterhorst@192.168.42.186   # manni (VM 15)
 ssh -p 2222 dieterhorst@192.168.42.195   # Marcel (VM 13)
 ssh -p 2222 dieterhorst@192.168.42.214   # devoraxx (VM 02)
-ssh -p 2222 dieterhorst@192.168.42.216   # dns-portal (VM 04, FreeBSD)
+ssh -p 2222 dieterhorst@192.168.42.216   # dns-portal (VM 04)
+ssh -p 2222 dieterhorst@192.168.42.248   # hugo (VM 20)
+ssh dieterhorst@192.168.42.231            # kleinerHund (Dev-Hypervisor)
 ssh -p 2222 dieterhorst@192.168.42.230   # admin-portal (VM 03)
 ssh -p 2222 dieterhorst@192.168.42.246   # edo (VM 08)
 ssh -p 2222 dieterhorst@192.168.42.252   # thea (VM 07)
@@ -289,7 +296,7 @@ ssh -p 2222 dieterhorst@192.168.42.254   # proxy-portal (VM 05)
 - SMB Freigabe (Port 445)
 - SSH (Port 2222)
 
-### DNS-Server (192.168.42.216) - FreeBSD
+### DNS-Server (192.168.42.216) - Debian
 - Unbound DNS (Port 53)
 - ISC DHCP (Port 67)
 - DNS/DHCP Web-Portal (Port 80)
@@ -464,7 +471,7 @@ Beispiel:
 |----|-----------|
 | admin-portal (.230) | Infrastruktur, SSH, tmux, Docker, Portal |
 | office (.253) | Dieter-Kontext, Philosophie, Akten, Prompten |
-| dns-portal (.216) | DNS, DHCP, FreeBSD |
+| dns-portal (.216) | DNS, DHCP, Debian |
 | mira (.15) | AI-Systeme |
 | devoraxx (.214) | Next.js, NestJS |
 
