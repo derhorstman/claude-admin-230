@@ -29,7 +29,7 @@ Haupt-Hypervisor, 128 GB RAM, RTX 5080, **iCloud-Share**
 | 01 | MIRA/EVY | .15 | AI-System, Voice-Clone |
 | 02 | devoraxx | .214 | Next.js + NestJS |
 | 03 | admin-portal | .230 | Zentrales Admin-Portal |
-| 04 | dns-portal | .216 | Unbound DNS + DHCP (FreeBSD) |
+| 04 | dns-portal | .216 | Unbound DNS + DHCP (Debian) |
 | 05 | proxy-portal | .254 | Reverse Proxy |
 | 06 | office | .253 | Office-Server |
 | 07 | thea | .252 | Pflegedokumentation |
@@ -40,11 +40,12 @@ Haupt-Hypervisor, 128 GB RAM, RTX 5080, **iCloud-Share**
 | 12 | cant_DEV | .174 | Cant Entwicklung |
 | 13 | Marcel | .195 | Marcels Terminal-Portal |
 | 14 | stefan | .116 | Stefans Portal + Coolify |
-| 15 | Projekt_15 | .186 | Neues Projekt |
+| 15 | manni | .186 | Mannis Portal |
 | 16 | Blue | .139 | Simones KI-Assistent |
 | 17 | openhab | .10 | Smart Home |
-| 18 | Projekt_18 | .100 | Neues Projekt |
+| 18 | tools | .110 | Utility-Sammlung |
 | 19 | Nextcloud | .12 | Cloud + Home Assistant |
+| 20 | hugo | .248 | Hugo Portal |
 
 ### Standalone Geräte
 
@@ -62,9 +63,9 @@ Haupt-Hypervisor, 128 GB RAM, RTX 5080, **iCloud-Share**
 ### Netzwerk-Infrastruktur
 
 - **Gateway:** 192.168.42.1 (Fritzbox)
-- **DNS/DHCP:** 192.168.42.216 (FreeBSD)
+- **DNS/DHCP:** 192.168.42.216 (Debian)
 - **Admin-Portal:** http://192.168.42.230
-- **Gesamt:** 19 VMs auf DASBIEST + 2 Standalone
+- **Gesamt:** 20 VMs auf DASBIEST + 2 Standalone
 
 ---
 
@@ -118,17 +119,18 @@ ssh dieterhorst@192.168.42.17            # Mac Pro
 ssh -p 2222 dieterhorst@192.168.42.10    # openhab
 ssh -p 2222 dieterhorst@192.168.42.12    # Nextcloud
 ssh -p 2222 dieterhorst@192.168.42.15    # MIRA/EVY
-ssh -p 2222 dieterhorst@192.168.42.100   # Projekt_18
+ssh -p 2222 dieterhorst@192.168.42.110   # tools
 ssh -p 2222 dieterhorst@192.168.42.116   # stefan
 ssh -p 2222 dieterhorst@192.168.42.128   # PEDAGOGUS
 ssh -p 2222 dieterhorst@192.168.42.139   # Blue
 ssh -p 2222 dieterhorst@192.168.42.150   # Jascha/OpsRef
 ssh -p 2222 dieterhorst@192.168.42.166   # cant
 ssh -p 2222 dieterhorst@192.168.42.174   # cant_DEV
-ssh -p 2222 dieterhorst@192.168.42.186   # Projekt_15
+ssh -p 2222 dieterhorst@192.168.42.186   # manni
+ssh -p 2222 dieterhorst@192.168.42.248   # hugo
 ssh -p 2222 dieterhorst@192.168.42.195   # Marcel
 ssh -p 2222 dieterhorst@192.168.42.214   # devoraxx
-ssh -p 2222 dieterhorst@192.168.42.216   # dns-portal (FreeBSD)
+ssh -p 2222 dieterhorst@192.168.42.216   # dns-portal (Debian)
 ssh -p 2222 dieterhorst@192.168.42.230   # admin-portal
 ssh -p 2222 dieterhorst@192.168.42.246   # edo
 ssh -p 2222 dieterhorst@192.168.42.252   # thea

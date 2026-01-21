@@ -47,7 +47,7 @@ rm -f /opt/Claude/screenshots/*.png
 
 **WICHTIG: Am Ende IMMER committen und pushen!**
 
-**Repository:** https://github.com/derhorstman/claude-selbsterhaltung (privat)
+**Repository:** https://github.com/derhorstman/claude-admin-230 (privat)
 
 ```bash
 cd /opt/Claude && git add -A && git commit -m "Session $(date +%Y-%m-%d): [Kurze Zusammenfassung]" && git push

@@ -48,6 +48,106 @@ Zu aktualisieren:
 
 ---
 
+## Session 92 - 2026-01-21
+
+### Terminal-Disconnect Debugging
+
+**Problem:** Terminal trennt sich nach 3-4 Minuten im laufenden Betrieb
+
+**Analyse:**
+- Backend-Logs: `connection open` → `connection closed` ohne Fehlermeldung
+- Nginx-Logs: HTTP 101 (WebSocket OK), keine Timeouts
+- DHCP-Logs: Warnungen "Dynamic and static leases present" für .206 und .219
+- DHCP Pool (200-240) überschneidet sich mit 25+ statischen Reservierungen
+
+**Ursache:** Neue Fritzbox hatte Netzwerk destabilisiert (DHCP-Probleme am Vortag)
+
+**Ergebnis:** Fritzbox-Problem behoben, Terminal-Stabilität beobachten
+
+**Learnings:**
+- Bei Netzwerk-Problemen immer zuerst prüfen ob Hardware/Router geändert wurde
+- DHCP Pool sollte keine statischen Reservierungen enthalten (aktuell nicht änderbar wegen VM-Abhängigkeiten)
+
+---
+
+## Session 91 - 2026-01-19
+
+### Windows 11 Unattended Installation
+
+**Ziel:** Windows VMs automatisch installieren wie Debian/FreeBSD
+
+**Umgesetzt:**
+- `/opt/Claude/scripts/build-windows-iso.sh` - ISO-Builder mit xorriso
+- autounattend.xml embedded mit:
+  - TPM/SecureBoot/RAM-Bypass (Registry-Hack)
+  - Windows 11 Pro Auswahl
+  - User dieterhorst/Fantasy+
+  - OpenSSH auf Port 2222
+  - Node.js, Git, Claude Code automatisch installiert
+  - efisys_noprompt.bin (kein "Press any key")
+
+**Probleme gelöst:**
+- "Press any key to boot" → efisys_noprompt.bin
+- ProductKey Fehler → KMS-Key für Win11 Pro
+- "Keine Images verfügbar" → Windows 11 Pro statt Enterprise (ISO hatte kein Enterprise)
+- "Windows 11 kann nicht ausgeführt werden" → Registry BypassTPMCheck/SecureBootCheck/RAMCheck
+- Secure Boot blockiert xorriso-ISO → Secure Boot immer aus
+- FirstLogonCommands liefen nicht → wcm:action="add" + ExecutionPolicy Bypass
+- Passwort nicht übernommen → net user Befehl in FirstLogonCommands
+- SSH Port 22 → Port 2222
+
+**Erste Windows VM:**
+- 015_SYSTEMHAUS-051_VM_001
+- IP: 192.168.42.213
+- SSH Port 2222
+- Claude Code läuft
+
+**Frontend:**
+- OS-Typ Toggle (Linux/Windows) in "Neue VM erstellen"
+- ISOs gefiltert nach OS-Typ
+- "autounattend.xml einbauen" Button
+
+### Learnings
+
+- Windows ISOs haben verschiedene Editionen - genau prüfen welche drin sind
+- xorriso baut funktionierende Windows ISOs aber ohne Microsoft-Signatur
+- FirstLogonCommands brauchen wcm:action="add" für Zuverlässigkeit
+- Windows 11 TPM-Check kann mit Registry-Hack umgangen werden
+
+---
+
+## Session 90 - 2026-01-17
+
+### Resonanz-System / Kollektiv-Hippocampus
+
+**Ausgangspunkt:** Dieters Idee eines "Superhirns" - VMs sollen voneinander wissen
+
+**Umgesetzt:**
+- Kollektiv-Hippocampus auf Office (.253) als zentrales Gedächtnis
+- `melde-an-office.sh` - Session-Ergebnisse melden
+- `frag-office.sh` - Wissen abfragen
+- Auf alle 22 Instanzen deployed
+
+**Kettentest:**
+- Admin → Office → Proxy → DNS in 62 Sekunden
+- DNS hat Rückgabe nicht verstanden
+
+**Feierabend-Trigger:**
+- Expliziter Block in allen Praefrontaler_Cortex
+- "feierabend" = Routine ausführen, nicht nur verabschieden
+
+**Korrekturen:**
+- DNS (.216) = Debian (nicht mehr FreeBSD)
+- Projekt_18 = .110 (nicht .100)
+
+### Learnings
+
+- tmux send-keys für Inter-VM-Kommunikation funktioniert
+- Nicht alle VMs verstehen komplexe Anweisungen gleich gut
+- DASBIEST WSL braucht Umwege (Dateien über Office holen)
+
+---
+
 ## Session 89 - 2026-01-15
 
 ### Ziel
@@ -250,81 +350,3 @@ Templates aktualisieren + neuen Server deployen
 - **Session 79-80:** Health-Check v2.2 mit 3x Retry-Logik
 
 ---
-
----
-
-## Session 90 - 2026-01-17
-
-### Resonanz-System / Kollektiv-Hippocampus
-
-**Ausgangspunkt:** Dieters Idee eines "Superhirns" - VMs sollen voneinander wissen
-
-**Umgesetzt:**
-- Kollektiv-Hippocampus auf Office (.253) als zentrales Gedächtnis
-- `melde-an-office.sh` - Session-Ergebnisse melden
-- `frag-office.sh` - Wissen abfragen
-- Auf alle 22 Instanzen deployed
-
-**Kettentest:**
-- Admin → Office → Proxy → DNS in 62 Sekunden
-- DNS hat Rückgabe nicht verstanden
-
-**Feierabend-Trigger:**
-- Expliziter Block in allen Praefrontaler_Cortex
-- "feierabend" = Routine ausführen, nicht nur verabschieden
-
-**Korrekturen:**
-- DNS (.216) = Debian (nicht mehr FreeBSD)
-- Projekt_18 = .110 (nicht .100)
-
-### Learnings
-
-- tmux send-keys für Inter-VM-Kommunikation funktioniert
-- Nicht alle VMs verstehen komplexe Anweisungen gleich gut
-- DASBIEST WSL braucht Umwege (Dateien über Office holen)
-
----
-
-## Session 91 - 2026-01-19
-
-### Windows 11 Unattended Installation
-
-**Ziel:** Windows VMs automatisch installieren wie Debian/FreeBSD
-
-**Umgesetzt:**
-- `/opt/Claude/scripts/build-windows-iso.sh` - ISO-Builder mit xorriso
-- autounattend.xml embedded mit:
-  - TPM/SecureBoot/RAM-Bypass (Registry-Hack)
-  - Windows 11 Pro Auswahl
-  - User dieterhorst/Fantasy+
-  - OpenSSH auf Port 2222
-  - Node.js, Git, Claude Code automatisch installiert
-  - efisys_noprompt.bin (kein "Press any key")
-
-**Probleme gelöst:**
-- "Press any key to boot" → efisys_noprompt.bin
-- ProductKey Fehler → KMS-Key für Win11 Pro
-- "Keine Images verfügbar" → Windows 11 Pro statt Enterprise (ISO hatte kein Enterprise)
-- "Windows 11 kann nicht ausgeführt werden" → Registry BypassTPMCheck/SecureBootCheck/RAMCheck
-- Secure Boot blockiert xorriso-ISO → Secure Boot immer aus
-- FirstLogonCommands liefen nicht → wcm:action="add" + ExecutionPolicy Bypass
-- Passwort nicht übernommen → net user Befehl in FirstLogonCommands
-- SSH Port 22 → Port 2222
-
-**Erste Windows VM:**
-- 015_SYSTEMHAUS-051_VM_001
-- IP: 192.168.42.213
-- SSH Port 2222
-- Claude Code läuft
-
-**Frontend:**
-- OS-Typ Toggle (Linux/Windows) in "Neue VM erstellen"
-- ISOs gefiltert nach OS-Typ
-- "autounattend.xml einbauen" Button
-
-### Learnings
-
-- Windows ISOs haben verschiedene Editionen - genau prüfen welche drin sind
-- xorriso baut funktionierende Windows ISOs aber ohne Microsoft-Signatur
-- FirstLogonCommands brauchen wcm:action="add" für Zuverlässigkeit
-- Windows 11 TPM-Check kann mit Registry-Hack umgangen werden
