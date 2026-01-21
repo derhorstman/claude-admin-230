@@ -48,6 +48,55 @@ Zu aktualisieren:
 
 ---
 
+## Session 93 - 2026-01-21
+
+### Infrastruktur-Wartung & Mac-Integration
+
+**Ziel:** Server-Infrastruktur abgleichen, SSH-Keys deployen, SMB aufräumen, Mac-Scripts aktualisieren
+
+**Erledigt:**
+
+1. **Admin-Portal DB mit Praefrontaler_Cortex abgeglichen**
+   - WIN11EP Simone (.213) fehlte → als VM 21 hinzugefügt
+   - 2 Hosts + 21 VMs + 1 Standalone = 24 Maschinen
+
+2. **SSH-Keys deployed**
+   - Mein Key auf 4 Server: stefan (.116), jascha (.150), DASBIEST (.16), kleinerHund (.231)
+   - Office (.253) Key auf 3 Server: cant_dev (.174), DASBIEST (.16), kleinerHund (.231)
+   - Alle 22 Server jetzt mit Key-Auth erreichbar
+
+3. **SMB-Shares bereinigt**
+   - Alle 21 Linux-Server geprüft
+   - Doppelte Shares entfernt: printers, print$, systemhaus-001, dieterhorst, opsref, cant-dev
+   - dns-portal (.216) Pfad von /opt auf / korrigiert
+   - Standard: Jeder Server hat nur noch [hostname] Share → /
+
+4. **Mac /etc/hosts aktualisiert**
+   - Hinzugefügt: tools (.110), simone (.213), kleinerhund (.231), hugo (.248)
+   - Umbenannt: projekt-15 → manni
+
+5. **Mac mount-all-shares.command überarbeitet**
+   - Fehlende Shares hinzugefügt (tools, hugo)
+   - Kaputte Shares entfernt (box_dh, scan_in, simone, kleinerhund)
+   - Share-Namen korrigiert: mira (nicht systemhaus-001), jascha (nicht opsref), cantdev (nicht cant-dev)
+   - dasbiest auf iCloudDrive Share geändert
+   - Passwortloses sudo für dieterhorst eingerichtet
+   - Case-insensitive grep für Mount-Check
+   - 2>/dev/null für Fehlerunterdrückung
+
+6. **Avahi auf devoraxx/office konfiguriert**
+   - host-name explizit kleingeschrieben gesetzt
+   - SMB-Service mit lowercase Namen
+   - Problem: Finder-Seitenleiste zeigt trotzdem Großbuchstaben (NetBIOS-Limitation)
+
+**Learnings:**
+- NetBIOS wandelt Namen immer in Großbuchstaben um - nicht änderbar
+- Mac Finder Netzwerk-Bereich zeigt SMB-Server (NetBIOS), nicht Avahi
+- Bei API-Zugriff: Trailing Slash und Auth nicht vergessen
+- Direkt die Datenbank fragen statt HTTP-API umständlich nutzen
+
+---
+
 ## Session 92 - 2026-01-21
 
 ### Terminal-Disconnect Debugging

@@ -1,6 +1,6 @@
 # Projekt-Kontext
 
-**Letzte Aktualisierung:** 2026-01-21 (Session 92 - Feierabend)
+**Letzte Aktualisierung:** 2026-01-21 (Session 93 - Feierabend)
 
 ---
 
@@ -179,6 +179,7 @@ Haupt-Hypervisor, 128 GB RAM, **iCloud-Share**
 | 18 | tools | .110 | Linux | Utility-Sammlung |
 | 19 | Nextcloud | .12 | Linux | Cloud + Home Assistant |
 | 20 | hugo | .248 | Linux | Hugo Portal |
+| 21 | WIN11EP Simone | .213 | Windows | Simones Windows-Desktop |
 
 ### Hyper-V Host: kleinerHund (.231) - SSH Port 22
 
