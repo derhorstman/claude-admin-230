@@ -1,6 +1,6 @@
 # Projekt-Kontext
 
-**Letzte Aktualisierung:** 2026-01-21 (Session 93 - Feierabend)
+**Letzte Aktualisierung:** 2026-01-22 (Session 94 - Feierabend)
 
 ---
 
@@ -180,6 +180,7 @@ Haupt-Hypervisor, 128 GB RAM, **iCloud-Share**
 | 19 | Nextcloud | .12 | Linux | Cloud + Home Assistant |
 | 20 | hugo | .248 | Linux | Hugo Portal |
 | 21 | WIN11EP Simone | .213 | Windows | Simones Windows-Desktop |
+| 22 | inka | .235 | Linux | Website oldenburger-digitalservices.de |
 
 ### Hyper-V Host: kleinerHund (.231) - SSH Port 22
 
@@ -219,7 +220,7 @@ Dev-Hypervisor
 - **Gateway:** 192.168.42.1 (Fritzbox)
 - **DNS/DHCP:** 192.168.42.216 (Debian)
 - **Admin-Portal:** http://192.168.42.230
-- **Gesamt:** 20 VMs auf DASBIEST + 2 Hypervisors + 2 Standalone + 1 NAS = 25 Geräte
+- **Gesamt:** 22 VMs auf DASBIEST + 2 Hypervisors + 2 Standalone = 26 Geräte
 
 ### SSH-Zugriff (Key-Auth)
 
@@ -251,6 +252,7 @@ ssh -p 2222 dieterhorst@192.168.42.246   # edo (VM 08)
 ssh -p 2222 dieterhorst@192.168.42.252   # thea (VM 07)
 ssh -p 2222 dieterhorst@192.168.42.253   # office (VM 06)
 ssh -p 2222 dieterhorst@192.168.42.254   # proxy-portal (VM 05)
+ssh -p 2222 dieterhorst@192.168.42.235   # inka (VM 22)
 ```
 
 ---

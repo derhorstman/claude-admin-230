@@ -48,6 +48,41 @@ Zu aktualisieren:
 
 ---
 
+## Session 94 - 2026-01-22
+
+### Office-Rettung & Neue VM inka
+
+**Ziel:** Hängenden Claude auf Office retten, neue VM für Inka einrichten
+
+**Erledigt:**
+
+1. **Office (.253) Claude-Prozess gerettet**
+   - Prozess lief seit 05:34 (fast 2h), 44% CPU, 41% RAM
+   - tmux-Buffer komplett ausgelesen (3000 Zeilen)
+   - Session 102: Nuki-Mail, Buch "Normen brechen", "Dieter und die KI" neu angelegt
+   - Inka-Projekt Material gelesen (Ganzer_Plan.pdf - Freelancer-Coaching)
+   - kill -9 nötig, normale kill ignoriert
+
+2. **Neue VM inka (.235) komplett eingerichtet**
+   - Debian 13, 2GB RAM, 32GB Disk
+   - SSH Port 2222, Key-Auth (admin-portal + office)
+   - Hostname: inka
+   - Statische IP 192.168.42.235
+   - Selbsterhaltung: /opt/Claude/01_START/
+   - SMB-Share "inka" → / mit force user=root
+   - tmux 3.5a + Claude Code 2.0.65
+
+3. **Mac aktualisiert**
+   - /etc/hosts: 192.168.42.235 inka
+   - mount-all-shares.command: inka Share hinzugefügt
+
+**Fehler & Learning:**
+- sed-Befehl `s/Port 22/Port 2222/` auf bereits geänderte Zeile angewendet
+- Ergebnis: `Port 222222` → SSH tot, VM musste neu installiert werden
+- **Richtig:** `s/^#\?Port 22$/Port 2222/` mit Anker für exakten Match
+
+---
+
 ## Session 93 - 2026-01-21
 
 ### Infrastruktur-Wartung & Mac-Integration

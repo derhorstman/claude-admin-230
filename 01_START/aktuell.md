@@ -1,6 +1,6 @@
 # Aktuelle Aufgabe
 
-**Stand:** 2026-01-21 (Session 93 - Feierabend)
+**Stand:** 2026-01-22 (Session 94 - Feierabend)
 
 ---
 
@@ -10,35 +10,31 @@
 
 ---
 
-### Session 93 Ergebnisse
+### Session 94 Ergebnisse
 
-- **Infrastruktur-Abgleich:**
-  - Admin-Portal DB mit Praefrontaler_Cortex verglichen
-  - WIN11EP Simone (.213) fehlte - hinzugefügt (VM 21)
+- **Office (.253) gerettet:**
+  - Claude-Prozess hing seit ~1:40h (44% CPU, 41% RAM)
+  - Kompletten tmux-Buffer ausgelesen (Session 102 Dialog)
+  - Wichtige Inhalte gesichert: Nuki-Mail, Buch "Normen brechen", Inka-Projekt
+  - Prozess mit kill -9 beendet, neue tmux-Session gestartet
 
-- **SSH-Keys auf alle Server deployed:**
-  - 4 Server fehlten: stefan (.116), jascha (.150), DASBIEST (.16), kleinerHund (.231)
-  - Alle 22 Server jetzt mit Key-Auth erreichbar
-  - Office (.253) Key auf alle Server deployed
+- **Neue VM inka (.235) eingerichtet:**
+  - Debian 13, SSH Port 2222, Hostname: inka
+  - SSH-Keys deployed (admin-portal + office)
+  - Selbsterhaltung in /opt/Claude/01_START/
+  - SMB-Share "inka" mit Root-Zugriff
+  - Statische IP 192.168.42.235
+  - tmux + Claude Code 2.0.65 installiert
+  - Zweck: Website oldenburger-digitalservices.de
 
-- **SMB-Shares bereinigt:**
-  - Alle 21 Linux-Server geprüft
-  - Doppelte Shares entfernt (printers, print$, alte Namen)
-  - dns-portal (.216) Pfad von /opt auf / korrigiert
-  - Jeder Server hat jetzt nur noch [hostname] Share
+- **Mac aktualisiert:**
+  - /etc/hosts: inka (.235) hinzugefügt
+  - mount-all-shares.command: inka Share hinzugefügt
 
-- **Mac /etc/hosts aktualisiert:**
-  - Fehlende Einträge: tools (.110), simone (.213), kleinerhund (.231), hugo (.248)
-  - projekt-15 umbenannt zu manni
-
-- **Mac mount-all-shares.command überarbeitet:**
-  - Fehlende Shares hinzugefügt
-  - Kaputte Shares entfernt (box_dh, scan_in, simone)
-  - dasbiest auf iCloudDrive Share geändert
-  - Passwortloses sudo eingerichtet
-  - Case-insensitive grep für Mount-Check
-
-- **Avahi auf devoraxx/office konfiguriert** (Kleinschreibung in Finder-Seitenleiste nicht möglich - NetBIOS-Limitation)
+- **Fehler gemacht:**
+  - sed-Befehl für SSH-Port doppelt ausgeführt → Port 222222 statt 2222
+  - VM musste neu installiert werden
+  - Lesson: Bei Systemkonfig immer Anker verwenden: `s/^#\?Port 22$/Port 2222/`
 
 ---
 
@@ -50,7 +46,7 @@
 
 ## TODO: Nächste Schritte
 
+- [ ] inka (.235) in Admin-Portal DB hinzufügen
+- [ ] Website für Inka aufsetzen
 - [ ] Beobachten ob Terminal-Disconnects weiterhin auftreten
-- [ ] Nächste Windows VM testen ob alles automatisch läuft
-- [ ] API Key automatisch auf neue Windows VMs deployen
 
