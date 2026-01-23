@@ -403,6 +403,26 @@ Templates aktualisieren + neuen Server deployen
 
 ---
 
+## Session 95 - 2026-01-23
+
+### Erledigt
+- **Neue VM labor (.239) komplett eingerichtet:**
+  - SSH Port 2222, Hostname labor
+  - SMB-Share "labor" mit Root-Zugriff
+  - Selbsterhaltung deployed
+  - Statische IP 192.168.42.239
+  - tmux + Claude Code 2.0.65 (Auto-Updates deaktiviert)
+  - In Admin-Portal DB eingetragen (ID 168)
+  - Mac /etc/hosts aktualisiert
+
+- **Umfangreicher Startprompt für Audio-Labor:**
+  - Projekt: Web-Synthesizer für Klangentwicklung
+  - Features: Oszillatoren, Filter, ADSR, Effekte, LFO, Sequenzer
+  - Tech-Stack: React/Vue Frontend, Node.js Backend, Web Audio API
+  - Ziel: Klangfarben und Tonmuster für neue Instrumentalwerke
+
+---
+
 ## Session 82 - 2026-01-13
 
 ### Erledigt
