@@ -186,6 +186,10 @@ Haupt-Hypervisor, 128 GB RAM, **iCloud-Share**
 
 Dev-Hypervisor
 
+| VM# | Hostname | IP | OS | Funktion |
+|-----|----------|-----|-----|----------|
+| 01 | labor | .239 | Linux | Audio-Labor: Klang-Synthesizer |
+
 ### Standalone Geräte
 
 | IP | Name | Funktion |
@@ -253,6 +257,7 @@ ssh -p 2222 dieterhorst@192.168.42.252   # thea (VM 07)
 ssh -p 2222 dieterhorst@192.168.42.253   # office (VM 06)
 ssh -p 2222 dieterhorst@192.168.42.254   # proxy-portal (VM 05)
 ssh -p 2222 dieterhorst@192.168.42.235   # inka (VM 22)
+ssh -p 2222 dieterhorst@192.168.42.239   # labor (kleinerHund VM 01)
 ```
 
 ---
