@@ -1,6 +1,6 @@
 # Aktuelle Aufgabe
 
-**Stand:** 2026-01-23 (Session 95 - Feierabend)
+**Stand:** 2026-01-26 (Session 96 - Feierabend)
 
 ---
 
@@ -10,27 +10,30 @@
 
 ---
 
-### Session 95 Ergebnisse
+### Session 96 Ergebnisse
 
-- **Neue VM labor (.239) eingerichtet:**
-  - Debian 13, SSH Port 2222, Hostname: labor
-  - SSH-Key deployed
-  - Selbsterhaltung in /opt/Claude/01_START/
-  - SMB-Share "labor" mit Root-Zugriff
-  - Statische IP 192.168.42.239 konfiguriert
-  - tmux + Claude Code 2.0.65 installiert (Auto-Updates aus)
-  - In Admin-Portal DB eingetragen (ID 168)
-  - Mac /etc/hosts aktualisiert
+- **Mikrofon-Problem gelöst:**
+  - Ursache: OpenAI API Guthaben war aufgebraucht (-$0.33)
+  - Dieter hat Auto-Recharge auf $100 erhöht
+  - Mikrofon funktioniert wieder
 
-- **Zweck labor VM:**
-  - Audio-Labor für Ton- und Klangentwicklung
-  - Umfangreicher Startprompt mit Projekt-Spezifikation:
-    - Web-Synthesizer mit React/Vue + Node.js Backend
-    - Oszillatoren, Filter, ADSR, Effekte, LFO
-    - Sample-Import, MIDI-Support
-    - Step-Sequenzer, Piano-Roll
-    - Export nach WAV/MP3/FLAC
-  - Ziel: Klangfarben und Tonmuster für neue Instrumentalwerke
+- **Lokales Whisper als Fallback eingebaut:**
+  - Office (.253) hat den Auftrag ausgeführt (Kollektiv-Arbeit!)
+  - `/opt/admin-portal/backend/app/api/stt.py` angepasst
+  - Primär: Lokales Whisper (kostenlos)
+  - Fallback: OpenAI Whisper API
+  - Backend neu gebaut und läuft
+
+- **Kollektiv-Arbeit demonstriert:**
+  - Admin-Portal kann Backend nicht selbst rebuilden (Session-Abbruch)
+  - Auftrag via tmux an Office (.253) weitergegeben
+  - Office hat Code geändert und Backend gebaut
+  - Erfolgreiche Zusammenarbeit zwischen VMs
+
+### Session 95 Ergebnisse (Archiv)
+
+- Neue VM labor (.239) auf kleinerHund eingerichtet
+- Audio-Labor für Klang-Synthesizer
 
 ---
 
