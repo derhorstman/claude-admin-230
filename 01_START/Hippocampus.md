@@ -48,6 +48,38 @@ Zu aktualisieren:
 
 ---
 
+## Session 97 - 2026-01-28
+
+### Frontend-Farbkontrast verbessern
+
+**Ziel:** Bessere Lesbarkeit der Icon-Buttons im Admin-Portal
+
+**Erledigt:**
+
+1. **Globale CSS-Variablen angepasst** (`/opt/admin-portal/frontend/src/app.css`)
+   - `--text-secondary`: #b3b3b3 → #d4d4d4 (heller)
+   - `--text-muted`: #888888 → #a0a0a0 (heller)
+   - `--border`: #404040 → #4a4a4a (heller)
+   - Neue Variablen für Icon-Buttons: `--icon-btn-bg`, `--icon-btn-border`, `--icon-btn-color`
+
+2. **Neue globale `.icon-btn` Klasse**
+   - Hellerer Hintergrund (#2d2d2d)
+   - Sichtbarer Rahmen (#505050)
+   - Helle Icon-Farbe (#e8e8e8)
+   - Varianten: `.danger` (rot), `.warning` (gelb), `.success` (grün), `.favorite` (Stern)
+   - Hover-Effekte für alle Varianten
+
+3. **Snippets-Seite aktualisiert**
+   - Action-Buttons (Favorit, Kopieren, Bearbeiten, Löschen) nutzen jetzt `.icon-btn`
+   - Kategorie-Chips oben beibehalten (kleine farbige Punkte - waren OK)
+
+**Learnings:**
+- CSS-Variablen in `app.css` wirken global auf alle Svelte-Komponenten
+- Lokale Styles in `<style>` Blöcken können globale überschreiben
+- Bei Dark-Mode: Kontrastverhältnis mindestens 4.5:1 für Text anstreben
+
+---
+
 ## Session 94 - 2026-01-22
 
 ### Office-Rettung & Neue VM inka

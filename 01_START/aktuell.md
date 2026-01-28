@@ -1,6 +1,6 @@
 # Aktuelle Aufgabe
 
-**Stand:** 2026-01-26 (Session 96 - Feierabend)
+**Stand:** 2026-01-28 (Session 97 - Feierabend)
 
 ---
 
@@ -10,30 +10,20 @@
 
 ---
 
-### Session 96 Ergebnisse
+### Session 97 Ergebnisse
 
-- **Mikrofon-Problem gelöst:**
-  - Ursache: OpenAI API Guthaben war aufgebraucht (-$0.33)
-  - Dieter hat Auto-Recharge auf $100 erhöht
-  - Mikrofon funktioniert wieder
+- **Frontend-Farbkontrast verbessert:**
+  - Globale CSS-Variablen in `app.css` angepasst für bessere Lesbarkeit
+  - `--text-secondary` und `--text-muted` heller gemacht
+  - Neue `.icon-btn` Klasse für Action-Buttons mit gutem Kontrast
+  - Snippets-Seite: Action-Buttons (Favorit, Kopieren, Bearbeiten, Löschen) jetzt gut sichtbar
+  - Kategorie-Dots/Chips oben beibehalten (waren in Ordnung)
 
-- **Lokales Whisper als Fallback eingebaut:**
-  - Office (.253) hat den Auftrag ausgeführt (Kollektiv-Arbeit!)
-  - `/opt/admin-portal/backend/app/api/stt.py` angepasst
-  - Primär: Lokales Whisper (kostenlos)
-  - Fallback: OpenAI Whisper API
-  - Backend neu gebaut und läuft
+### Session 96 Ergebnisse (Archiv)
 
-- **Kollektiv-Arbeit demonstriert:**
-  - Admin-Portal kann Backend nicht selbst rebuilden (Session-Abbruch)
-  - Auftrag via tmux an Office (.253) weitergegeben
-  - Office hat Code geändert und Backend gebaut
-  - Erfolgreiche Zusammenarbeit zwischen VMs
-
-### Session 95 Ergebnisse (Archiv)
-
-- Neue VM labor (.239) auf kleinerHund eingerichtet
-- Audio-Labor für Klang-Synthesizer
+- Mikrofon-Problem gelöst (OpenAI Guthaben)
+- Lokales Whisper als Fallback eingebaut
+- Kollektiv-Arbeit zwischen VMs demonstriert
 
 ---
 
@@ -48,4 +38,5 @@
 - [ ] Website für Inka (.235) aufsetzen
 - [ ] Beobachten ob Terminal-Disconnects weiterhin auftreten
 - [ ] labor (.239) - Claude starten und Klang-Synthesizer entwickeln lassen
+- [ ] Icon-Button-Styles auf weitere Seiten anwenden (falls nötig)
 
