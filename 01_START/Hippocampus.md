@@ -50,42 +50,40 @@ Zu aktualisieren:
 
 ## Session 99 - 2026-01-29
 
-### Office (.253) ins Projekt-System aufgenommen
+### Alle VMs ins Projekt-System aufgenommen
 
-**Ziel:** Office-VM im Admin-Portal unter "Konzepte" anzeigen mit vollständiger projekt.yaml
+**Ziel:** Alle VMs im Admin-Portal unter "Konzepte" mit projekt.yaml und Code-Analyse
 
 **Erledigt:**
 
-1. **devoraxx Code-Analyse durchgeführt**
-   - Office-Code auf devoraxx kopiert (`/opt/devoraxx/code-uploads/office/`)
-   - devoraxx Dienste gestartet (PostgreSQL + API)
-   - JWT-Token geholt (admin@devoraxx.de)
-   - Lokales Repository erstellt via API
-   - Analyse gestartet via `/analyses/:id/approve`
+1. **devoraxx Code-Analyse für alle VMs**
+   - Workflow-Doku erstellt: `/opt/Claude/workflows/devoraxx-analyse.md`
+   - 10+ Projekte parallel durch devoraxx analysiert
+   - Code per tar/ssh auf devoraxx kopiert
+   - API-Workflow: login → local repo → approve → wait → result
 
-2. **Analyse-Ergebnis**
-   - Gesamt-Score: C (3/5)
-   - Security: D (2/5) - Critical: Hardcoded Credentials
-   - Quality: C (3/5) - High: Code Duplication
-   - Maintainability: D (2/5) - High: Monolithic Files
-   - Architecture: C (3/5)
-   - Dependencies: B (4/5)
+2. **22 VMs mit projekt.yaml ausgestattet**
+   - Score B: cant, cant_DEV, openhab, Nextcloud, hugo, admin-portal
+   - Score C: devoraxx, dns-portal, proxy-portal, Thea, marcel, milena, opsref, pedagogus, office
+   - Score D: MIRA, edo, stefan, blue, tools
+   - Ohne Score: inka, mogli (noch keine Analyse)
+   - Simone (.213): SSH überlastet, ausgelassen
 
-3. **projekt.yaml auf Office erstellt**
-   - Vollständiges Template nach devoraxx-Standard
-   - Alle Findings dokumentiert
-   - Tech-Stack, Architektur, Strategie ausgefüllt
+3. **Kritische Findings identifiziert**
+   - Fast alle Projekte: Hardcoded Credentials
+   - MIRA: API-Keys im Klartext, Score D
+   - blue/tools: Command Injection, Score F/D
+   - cant: Bestes Projekt mit Score B
 
-4. **Workflow-Dokumentation erstellt**
-   - `/opt/Claude/workflows/devoraxx-analyse.md`
-   - Schnellstart-Anleitung für zukünftige VM-Analysen
-   - API-Endpoints, Troubleshooting
+4. **Admin-Portal Konzepte-Seite**
+   - 24 VMs, 16 mit Projekt, 2 Score A/B, 23 Online
+   - Alle Projekte mit Tech-Stack-Tags sichtbar
 
 **Learnings:**
 - devoraxx braucht PostgreSQL + Redis (docker-compose.dev.yml)
-- API auf Port 3001, Frontend auf Port 3000
-- Analyse wird durch `/analyses/:id/approve` gestartet (nicht /analyze)
+- API auf Port 3001, Analyse via `/analyses/:id/approve`
 - projekt.yaml muss unter `/opt/Claude/projekt.yaml` liegen
+- Windows SSH (Simone) überlastet bei vielen Verbindungen
 
 ---
 

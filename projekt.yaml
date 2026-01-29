@@ -1,0 +1,39 @@
+projekt:
+  name: "admin-portal"
+  beschreibung: "Zentrales Admin-Portal - VM-Management, Terminals, Sessions, Konzepte, Backups"
+  version: "1.0.0"
+  level: 9
+  vm: "192.168.42.230"
+  url: "https://admin.systemhaus-horst.de"
+  repo: "/opt/admin-portal"
+
+codeanalyse:
+  analysiert_am: "2026-01-29"
+  scores:
+    security: "C"
+    quality: "B"
+    maintainability: "B"
+    architecture: "A"
+    dependencies: "B"
+    gesamt: "B"
+  summary: |
+    Zentrales Verwaltungsportal für alle VMs.
+    FastAPI + SvelteKit + PostgreSQL + Docker.
+    Gut strukturiert, hohe Funktionalität.
+
+stack:
+  backend:
+    framework: "FastAPI"
+    sprache: "Python"
+    port: 8000
+  frontend:
+    framework: "SvelteKit"
+    sprache: "TypeScript"
+    port: 3000
+  datenbank:
+    typ: "PostgreSQL"
+    pfad: "Docker"
+
+sessions:
+  letzte_session: 99
+  letzte_aenderung: "2026-01-29"

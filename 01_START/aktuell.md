@@ -12,11 +12,12 @@
 
 ### Session 99 Ergebnisse
 
-- **Office (.253) ins Projekt-System aufgenommen:**
-  - devoraxx Code-Analyse durchgeführt (Score C)
-  - projekt.yaml erstellt unter `/opt/Claude/projekt.yaml`
-  - Office erscheint jetzt im Admin-Portal unter "Konzepte"
+- **Alle 22 VMs ins Projekt-System aufgenommen:**
+  - devoraxx Code-Analyse für 10+ Projekte durchgeführt
+  - projekt.yaml auf allen Linux-VMs erstellt
+  - Konzepte-Seite zeigt: 24 VMs, 16 mit Projekt, 2 Score A/B
   - Workflow-Doku: `/opt/Claude/workflows/devoraxx-analyse.md`
+  - Simone (.213) ausgelassen (SSH überlastet)
 
 ### Session 98 Ergebnisse (Archiv)
 
