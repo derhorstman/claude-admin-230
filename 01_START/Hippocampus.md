@@ -48,6 +48,36 @@ Zu aktualisieren:
 
 ---
 
+## Session 98 - 2026-01-29
+
+### Snippet-Kategorien nach Maschine filtern
+
+**Ziel:** Snippets im Terminal automatisch nach verbundener Maschine anzeigen
+
+**Erledigt:**
+
+1. **Datenbank aktualisiert**
+   - Alle 20 Snippet-Kategorien hatten `machine_id = NULL` (global)
+   - SQL-Update: Jede Kategorie mit passender `machine_id` verknüpft
+   - Mapping basierend auf IP im Kategorienamen (z.B. "office (.253)" → machine_id 111)
+
+2. **Frontend-Logik angepasst** (`/terminals/+page.svelte`)
+   - `loadSnippets()` filtert Kategorien: `machine_id === null OR machine_id === machineId`
+   - Auto-Select: Beim Verbinden wird die Maschinen-Kategorie automatisch ausgewählt
+   - Snippets werden direkt geladen - User muss nicht erst Kategorie wählen
+
+3. **Sidebar-Experiment rückgängig gemacht**
+   - Kurzer Test mit permanenter Sidebar rechts am Terminal
+   - User wollte das alte Dropdown-UI behalten
+   - Nur das Auto-Select-Feature beibehalten
+
+**Learnings:**
+- Snippet-Kategorien können per `machine_id` Maschinen zugeordnet werden
+- Bei UI-Änderungen erst fragen, dann bauen
+- Kleine Änderung (Auto-Select) > große UI-Umbauten
+
+---
+
 ## Session 97 - 2026-01-28
 
 ### Frontend-Farbkontrast verbessern
@@ -409,80 +439,22 @@ Button für DASBIEST Claude-Session auf Terminals- und Sessions-Seite
 
 ---
 
-## Session 83 - 2026-01-13
+### Zusammenfassung Sessions 81-95
 
-### Ziel
-Templates aktualisieren + neuen Server deployen
-
-### Erledigt
-
-1. **Office-Server (.253) ausgelesen**
-   - Praefrontaler_Cortex.md, aktuell.md, feierabend.md analysiert
-   - Änderungen seit letztem Template-Update identifiziert
-
-2. **Templates aktualisiert** (`/opt/Claude/templates/01_START/`)
-   - **aktuell.md:** + Wichtige Regeln (NIEMALS Dienste stoppen, langsam arbeiten)
-   - **Praefrontaler_Cortex.md:** + Alle 19 VMs korrekt, + .100 Projekt_18, + FreeBSD bei dns-portal, + Lernpunkte
-   - **feierabend.md:** + Screenshots löschen, + Git-Backup, + Pre-Session Backup
-   - **Schnellreferenz.md:** + Vollständige IP-Liste (23 Einträge)
-
-3. **Neuen Server .110 deployed**
-   - Hostname: systemhaus
-   - OS: Debian 13 (trixie)
-   - Node.js: v22.21.0
-   - Claude Code: 2.0.65
-   - SSH Port 2222, SMB-Freigabe, 7 SSH-Keys kopiert
-
----
-
-## Session 95 - 2026-01-23
-
-### Erledigt
-- **Neue VM labor (.239) komplett eingerichtet:**
-  - SSH Port 2222, Hostname labor
-  - SMB-Share "labor" mit Root-Zugriff
-  - Selbsterhaltung deployed
-  - Statische IP 192.168.42.239
-  - tmux + Claude Code 2.0.65 (Auto-Updates deaktiviert)
-  - In Admin-Portal DB eingetragen (ID 168)
-  - Mac /etc/hosts aktualisiert
-
-- **Umfangreicher Startprompt für Audio-Labor:**
-  - Projekt: Web-Synthesizer für Klangentwicklung
-  - Features: Oszillatoren, Filter, ADSR, Effekte, LFO, Sequenzer
-  - Tech-Stack: React/Vue Frontend, Node.js Backend, Web Audio API
-  - Ziel: Klangfarben und Tonmuster für neue Instrumentalwerke
-
----
-
-## Session 82 - 2026-01-13
-
-### Erledigt
-- DASBIEST auf Sessions-Seite hinzugefügt
-- Sessions-API gibt jetzt auch DASBIEST (.16) zurück
-- Kill-Funktionen mit WSL-Wrapper für DASBIEST
-
----
-
-## Session 81 - 2026-01-13
-
-### Erledigt
-- Terminal-Button für DASBIEST auf Detailseite + Split-Terminal
-- Auto-Befehl: `wsl -d Ubuntu -e tmux attach -t claude`
-
----
+- **Session 81-84:** DASBIEST Terminal-Integration (WSL-Wrapper, Sessions-Seite)
+- **Session 83:** Templates aktualisiert, Server .110 deployed
+- **Session 85:** Office-VM Datenrettung (LVM Mount in WSL)
+- **Session 86-87:** Backup-API repariert (PowerShell NoProfile), Sessions-Erkennung False Positive Fix
+- **Session 88-89:** Schnellreferenz ausgefüllt, Snippets-System neu aufgebaut (20 Kategorien)
+- **Session 90:** Resonanz-System / Kollektiv-Hippocampus auf Office (.253)
+- **Session 91:** Windows 11 Unattended Installation ISO-Builder
+- **Session 92-93:** Terminal-Disconnect Debugging, SMB-Cleanup, Mac-Scripts
+- **Session 94:** Office-Rettung, neue VM inka (.235)
+- **Session 95:** Neue VM labor (.239) mit Audio-Labor Startprompt
 
 ### Zusammenfassung Sessions 63-80
 
-- **Session 63-65:** Admin Portal iOS App erstellt (Login, Dashboard, Sessions, Terminal, Snippets)
-- **Session 66:** Konsistenzprüfungs-Prompt v2, Snippet-Kategorie "Wartung & Analyse"
-- **Session 69:** GPU-Passthrough RTX 5080 gescheitert (BIOS-Problem)
-- **Session 70-72:** QNAP NAS (NASHORST) für Backups eingerichtet und ins Portal integriert
-- **Session 73:** Selbsterhaltung Konsistenzprüfung
-- **Session 74:** Backup-Pfad auf NAS aktualisiert
-- **Session 75:** VM "Blue" (.139) für Simone, Frontend Case-Fix
-- **Session 77:** VMs Projekt_15 (.186) + Projekt_18 (.100) deployed
-- **Session 78:** RAM/Dienste-Anzeige Bugs behoben (Locale + Case)
-- **Session 79-80:** Health-Check v2.2 mit 3x Retry-Logik
+- **Session 63-65:** Admin Portal iOS App erstellt
+- **Session 66-80:** QNAP NAS, GPU-Passthrough Test, VM-Deployments, Health-Check v2.2
 
 ---

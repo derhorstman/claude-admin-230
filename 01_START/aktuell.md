@@ -1,6 +1,6 @@
 # Aktuelle Aufgabe
 
-**Stand:** 2026-01-28 (Session 97 - Feierabend)
+**Stand:** 2026-01-29 (Session 98 - Feierabend)
 
 ---
 
@@ -10,20 +10,19 @@
 
 ---
 
-### Session 97 Ergebnisse
+### Session 98 Ergebnisse
 
-- **Frontend-Farbkontrast verbessert:**
-  - Globale CSS-Variablen in `app.css` angepasst für bessere Lesbarkeit
-  - `--text-secondary` und `--text-muted` heller gemacht
-  - Neue `.icon-btn` Klasse für Action-Buttons mit gutem Kontrast
-  - Snippets-Seite: Action-Buttons (Favorit, Kopieren, Bearbeiten, Löschen) jetzt gut sichtbar
-  - Kategorie-Dots/Chips oben beibehalten (waren in Ordnung)
+- **Snippet-Kategorien nach Maschine filtern:**
+  - Alle 20 Snippet-Kategorien mit `machine_id` verknüpft (waren vorher NULL/global)
+  - Kategorien werden jetzt nach verbundener Maschine gefiltert
+  - Auto-Select: Beim Verbinden wird die Maschinen-Kategorie automatisch ausgewählt
+  - Snippets werden direkt geladen - kein extra Klick auf Kategorie nötig
+  - UI bleibt wie vorher (Dropdown), aber Inhalt ist sofort verfügbar
 
-### Session 96 Ergebnisse (Archiv)
+### Session 97 Ergebnisse (Archiv)
 
-- Mikrofon-Problem gelöst (OpenAI Guthaben)
-- Lokales Whisper als Fallback eingebaut
-- Kollektiv-Arbeit zwischen VMs demonstriert
+- Frontend-Farbkontrast verbessert
+- CSS-Variablen angepasst für bessere Lesbarkeit
 
 ---
 
@@ -38,5 +37,4 @@
 - [ ] Website für Inka (.235) aufsetzen
 - [ ] Beobachten ob Terminal-Disconnects weiterhin auftreten
 - [ ] labor (.239) - Claude starten und Klang-Synthesizer entwickeln lassen
-- [ ] Icon-Button-Styles auf weitere Seiten anwenden (falls nötig)
 
