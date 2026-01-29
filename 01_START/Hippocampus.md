@@ -48,6 +48,47 @@ Zu aktualisieren:
 
 ---
 
+## Session 99 - 2026-01-29
+
+### Office (.253) ins Projekt-System aufgenommen
+
+**Ziel:** Office-VM im Admin-Portal unter "Konzepte" anzeigen mit vollständiger projekt.yaml
+
+**Erledigt:**
+
+1. **devoraxx Code-Analyse durchgeführt**
+   - Office-Code auf devoraxx kopiert (`/opt/devoraxx/code-uploads/office/`)
+   - devoraxx Dienste gestartet (PostgreSQL + API)
+   - JWT-Token geholt (admin@devoraxx.de)
+   - Lokales Repository erstellt via API
+   - Analyse gestartet via `/analyses/:id/approve`
+
+2. **Analyse-Ergebnis**
+   - Gesamt-Score: C (3/5)
+   - Security: D (2/5) - Critical: Hardcoded Credentials
+   - Quality: C (3/5) - High: Code Duplication
+   - Maintainability: D (2/5) - High: Monolithic Files
+   - Architecture: C (3/5)
+   - Dependencies: B (4/5)
+
+3. **projekt.yaml auf Office erstellt**
+   - Vollständiges Template nach devoraxx-Standard
+   - Alle Findings dokumentiert
+   - Tech-Stack, Architektur, Strategie ausgefüllt
+
+4. **Workflow-Dokumentation erstellt**
+   - `/opt/Claude/workflows/devoraxx-analyse.md`
+   - Schnellstart-Anleitung für zukünftige VM-Analysen
+   - API-Endpoints, Troubleshooting
+
+**Learnings:**
+- devoraxx braucht PostgreSQL + Redis (docker-compose.dev.yml)
+- API auf Port 3001, Frontend auf Port 3000
+- Analyse wird durch `/analyses/:id/approve` gestartet (nicht /analyze)
+- projekt.yaml muss unter `/opt/Claude/projekt.yaml` liegen
+
+---
+
 ## Session 98 - 2026-01-29
 
 ### Snippet-Kategorien nach Maschine filtern

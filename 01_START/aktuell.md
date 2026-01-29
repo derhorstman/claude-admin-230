@@ -1,6 +1,6 @@
 # Aktuelle Aufgabe
 
-**Stand:** 2026-01-29 (Session 98 - Feierabend)
+**Stand:** 2026-01-29 (Session 99 - Feierabend)
 
 ---
 
@@ -10,19 +10,18 @@
 
 ---
 
-### Session 98 Ergebnisse
+### Session 99 Ergebnisse
 
-- **Snippet-Kategorien nach Maschine filtern:**
-  - Alle 20 Snippet-Kategorien mit `machine_id` verknüpft (waren vorher NULL/global)
-  - Kategorien werden jetzt nach verbundener Maschine gefiltert
-  - Auto-Select: Beim Verbinden wird die Maschinen-Kategorie automatisch ausgewählt
-  - Snippets werden direkt geladen - kein extra Klick auf Kategorie nötig
-  - UI bleibt wie vorher (Dropdown), aber Inhalt ist sofort verfügbar
+- **Office (.253) ins Projekt-System aufgenommen:**
+  - devoraxx Code-Analyse durchgeführt (Score C)
+  - projekt.yaml erstellt unter `/opt/Claude/projekt.yaml`
+  - Office erscheint jetzt im Admin-Portal unter "Konzepte"
+  - Workflow-Doku: `/opt/Claude/workflows/devoraxx-analyse.md`
 
-### Session 97 Ergebnisse (Archiv)
+### Session 98 Ergebnisse (Archiv)
 
-- Frontend-Farbkontrast verbessert
-- CSS-Variablen angepasst für bessere Lesbarkeit
+- Snippet-Kategorien nach Maschine filtern
+- Auto-Select beim Verbinden
 
 ---
 
